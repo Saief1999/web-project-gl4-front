@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, DoCheck, OnInit, SimpleChanges, } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { RegistrationDto } from 'app/dto/registration-dto';
 
@@ -7,7 +7,7 @@ import { RegistrationDto } from 'app/dto/registration-dto';
   templateUrl: './signup-card.component.html',
   styleUrls: ['./signup-card.component.css']
 })
-export class SignupCardComponent implements OnInit {
+export class SignupCardComponent implements OnInit, DoCheck {
 
   private registrationDto: RegistrationDto = null;
   private validRpeatedPassword: boolean = false;
@@ -26,5 +26,7 @@ export class SignupCardComponent implements OnInit {
     this.registrationDto = registrationForm.value;
     console.log(this.registrationDto);
   }
+  ngDoCheck(): void {
 
+  }
 }

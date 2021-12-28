@@ -35,14 +35,13 @@
         <div class="my-1">
             <label class="form-label" for="">Repeat your password</label>
             <input class="form-control" ngModel type="password" name="repeatedpassword" #repeatedPasswordInput="ngModel"
-                [ngClass]="{'ng-invalid': !validRepeatedPassword}" placeholder="repeat your password"
-                (change)="valid_value(repeatedPasswordInput, passwordInput)">
+                required [pattern]="passwordInput.value" placeholder="repeat your password">
             <app-error-message [text]="'please repeat the same password'"
-                [condition]="repeatedPasswordInput.invalid && repeatedPasswordInput.touched">
+                [condition]="repeatedPasswordInput.invalid && repeatedPasswordInput.touched && repeatedPasswordInput.value != passwordInput.value">
             </app-error-message>
         </div>
-        <!-- [disabled]="registrationForm.invalid" -->
-        <button type="submit" class="btn btn-danger btn-block btn-round mt-3" (click)="register(registrationForm)">Sign
+        <button [disabled]="registrationForm.invalid" type="submit" class="btn btn-danger btn-block btn-round mt-3"
+            (click)="register(registrationForm)">Sign
             un</button>
     </form>
     <div class="d-block">
