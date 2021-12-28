@@ -1,6 +1,9 @@
 <div class="px-2 signup-card">
+    <div **ngIf="errorMessage" class="alert alert-danger p-2">
+        {{ errorMessage }}
+    </div>
     <h1>Sign up</h1>
-    <small class="text-muted">Create you new Account</small>
+    <small class="text-muted">Create your new Account</small>
     <form class="form-group py-2" #registrationForm="ngForm">
         <div class="my-1">
             <label class="form-label" for="">First name:</label>

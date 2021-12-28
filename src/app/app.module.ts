@@ -15,6 +15,7 @@ import { RegistrationPageComponent } from './auth-template/registration-page/reg
 import { LoginCardComponent } from './auth-template/login-card/login-card.component';
 import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
 import { ErrorMessageComponent } from './auth-template/error-message/error-message.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ErrorMessageComponent } from './auth-template/error-message/error-messa
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

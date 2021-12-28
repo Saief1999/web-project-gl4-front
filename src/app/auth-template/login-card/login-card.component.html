@@ -1,4 +1,7 @@
 <div class="px-2 signin-card align-items-center">
+    <div *ngif="errorMessage" class="alert custom-alert-danger p-2">
+        {{ errorMessage }}
+    </div>
     <h1>Login</h1>
     <small class="text-muted">Sign in to your account</small>
     <form class="form-group py-2" #loginForm="ngForm">
@@ -16,7 +19,8 @@
             <app-error-message [text]="'A password is at least 5 characters'"
                 [condition]="passwordInput.invalid && passwordInput.touched"></app-error-message>
         </div>
-        <button type="submit" class="btn btn-danger btn-block btn-round mt-3" (click)="login(loginForm)">Sign
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-danger btn-block btn-round mt-3"
+            (click)="login(loginForm)">Sign
             in</button>
     </form>
     <div class="d-block">

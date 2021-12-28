@@ -1,32 +1,41 @@
-import { Component, DoCheck, OnInit, SimpleChanges, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegistrationDto } from 'app/dto/registration-dto';
+import { RegistrationResponseDto } from 'app/dto/registration-response-dto';
+import { AuthenticationService } from 'app/serices/authentication.service';
 
 @Component({
   selector: 'app-signup-card',
   templateUrl: './signup-card.component.html',
   styleUrls: ['./signup-card.component.css']
 })
-export class SignupCardComponent implements OnInit, DoCheck {
+export class SignupCardComponent implements OnInit {
 
   private registrationDto: RegistrationDto = null;
-  private validRpeatedPassword: boolean = false;
-  constructor() {
+  private errorMessage: String = "";
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
   }
 
-  valid_value(repeatedPasswordInput: NgModel, passwordInput: NgModel): void {
-    this.validRpeatedPassword = repeatedPasswordInput.value === passwordInput.value || repeatedPasswordInput.value.lengh >= 5;
-    console.log(this.validRpeatedPassword)
-  }
-
   register(registrationForm: NgForm): void {
     this.registrationDto = registrationForm.value;
-    console.log(this.registrationDto);
+    this.authenticationService.signup(this.registrationDto).subscribe(
+      {
+        "next": (data: RegistrationResponseDto) => {
+          localStorage.setItem("token", data.token);
+          this.router.navigate(["home"]);
+        },
+        "error": (error) => {
+          this.errorMessage = error.message;
+        },
+      }
+    )
   }
-  ngDoCheck(): void {
 
-  }
 }
