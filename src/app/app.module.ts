@@ -12,14 +12,15 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { LoginPageComponent } from './login/login-page/login-page.component';
-
+import { LoginCardComponent } from './login/login-card/login-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    LoginCardComponent
   ],
   imports: [
     BrowserModule,
