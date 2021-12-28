@@ -11,8 +11,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
-import { LoginPageComponent } from './login/login-page/login-page.component';
-import { LoginCardComponent } from './login/login-card/login-card.component';
+import { LoginPageComponent } from './auth-template/login-page/login-page.component';
+import { LoginCardComponent } from './auth-template/login-card/login-card.component';
+import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginCardComponent } from './login/login-card/login-card.component';
     NavbarComponent,
     FooterComponent,
     LoginPageComponent,
-    LoginCardComponent
+    LoginCardComponent,
+    SignupCardComponent
   ],
   imports: [
     BrowserModule,

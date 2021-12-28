@@ -1,0 +1,51 @@
+<div class="px-2 signup-card">
+    <h1>Sign up</h1>
+    <small class="text-muted">Create you new Account</small>
+    <form class="form-group py-2" #registrationForm="ngForm">
+        <div class="my-1">
+            <label class="form-label" for="">First name:</label>
+            <input class="form-control" #firstNameInput="ngModel" ngModel type="text" required minlength="3"
+                pattern="/^[A-Za-z]+$/" name="firstname" placeholder="Your first name">
+            <small *ngIf="emailInput.invalid && emailInput.touched" class="text-danger">Insert a valid email</small>
+        </div>
+        <div class="my-1">
+            <label class="form-label" for="">Password</label>
+            <input class="form-control" ngModel type="password" required minlength="5" name="password"
+                #passwordInput="ngModel" placeholder="your password">
+            <small *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">
+                A password is at least 5 characters
+            </small>
+        </div>
+        <div class="my-1">
+            <label class="form-label" for="">Password</label>
+            <input class="form-control" ngModel type="password" required minlength="5" name="password"
+                #passwordInput="ngModel" placeholder="your password">
+            <small *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">
+                A password is at least 5 characters
+            </small>
+        </div>
+        <div class="my-1">
+            <label class="form-label" for="">Password</label>
+            <input class="form-control" ngModel type="password" required minlength="5" name="password"
+                #passwordInput="ngModel" placeholder="your password">
+            <small *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">
+                A password is at least 5 characters
+            </small>
+        </div>
+        <div class="my-1">
+            <label class="form-label" for="">Password</label>
+            <input class="form-control" ngModel type="password" required minlength="5" name="password"
+                #passwordInput="ngModel" placeholder="your password">
+            <small *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">
+                A password is at least 5 characters
+            </small>
+        </div>
+        <button type="submit" class="btn btn-danger mt-2" (click)="login(loginForm)">Sign in</button>
+    </form>
+    <div class="d-block">
+        <p>
+            Don't have an account yet?
+            <a [routerLink]="[ '/' ]">register</a>
+        </p>
+    </div>
+</div>
