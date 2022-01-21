@@ -1,10 +1,17 @@
 <div class="px-2 signup-card">
-    <div **ngIf="errorMessage" class="alert alert-danger p-2">
+    <div *ngIf="errorMessage" class="alert alert-danger p-2">
         {{ errorMessage }}
     </div>
     <h1>Sign up</h1>
     <small class="text-muted">Create your new Account</small>
     <form class="form-group py-2" #registrationForm="ngForm">
+        <div class="my-1">
+            <label class="form-label" for="">User name:</label>
+            <input class="form-control" #userNameInput="ngModel" ngModel type="text" required minlength="3"
+                name="username" pattern="[A-Za-z0-9]+" placeholder="Your user name">
+            <app-error-message [text]="'Insert a valid user name'"
+                [condition]="userNameInput.invalid && userNameInput.touched"></app-error-message>
+        </div>
         <div class="my-1">
             <label class="form-label" for="">First name:</label>
             <input class="form-control" #firstNameInput="ngModel" ngModel type="text" required minlength="3"

@@ -23,14 +23,14 @@ export class LoginCardComponent implements OnInit {
   login(loginForm: NgForm): void {
     this.loginDto = loginForm.value;
     this.authenticationService.login(this.loginDto).subscribe(
-      {
-        "next": (data: LoginResponseDto) => {
+      (data: LoginResponseDto) => {
           localStorage.setItem('token', data.token)
+          console.log(data.token);
         },
-        "error": (error) => {
+      (error) => {
           this.errorMessage = error.message;
+          console.log(this.errorMessage);
         }
-      }
     )
   }
 
