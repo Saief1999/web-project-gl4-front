@@ -28,10 +28,14 @@ export class LoginCardComponent implements OnInit {
           console.log(data.token);
         },
       (error) => {
-          this.errorMessage = error.message;
-          console.log(this.errorMessage);
+          this.errorMessage = error.error.message;
+          console.log(error);
         }
     )
+  }
+
+  setError() : void {
+    this.errorMessage = ""
   }
 
 }
