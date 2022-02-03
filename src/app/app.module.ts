@@ -11,13 +11,21 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
-
+import { RegistrationPageComponent } from './auth-template/registration-page/registration-page.component';
+import { LoginCardComponent } from './auth-template/login-card/login-card.component';
+import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
+import { ErrorMessageComponent } from './auth-template/error-message/error-message.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    RegistrationPageComponent,
+    LoginCardComponent,
+    SignupCardComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +35,7 @@ import { ExamplesModule } from './examples/examples.module';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
