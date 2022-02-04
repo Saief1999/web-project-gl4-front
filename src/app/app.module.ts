@@ -16,6 +16,7 @@ import { LoginCardComponent } from './auth-template/login-card/login-card.compon
 import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
 import { ErrorMessageComponent } from './auth-template/error-message/error-message.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationPageComponent,
     LoginCardComponent,
     SignupCardComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     BrowserModule,

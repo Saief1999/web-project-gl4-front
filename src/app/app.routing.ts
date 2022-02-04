@@ -11,9 +11,11 @@ import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.compo
 import { RegistrationPageComponent } from './auth-template/registration-page/registration-page.component';
 import { LoginCardComponent } from './auth-template/login-card/login-card.component';
 import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
+import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'confirm-email', component: ConfirmEmailComponent },
   { path: 'home', component: ComponentsComponent },
   { path: 'user-profile', component: ProfileComponent },
   { path: 'signup', component: SignupComponent },
