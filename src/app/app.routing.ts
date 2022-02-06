@@ -13,9 +13,11 @@ import { LoginCardComponent } from './auth-template/login-card/login-card.compon
 import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
 import { CinemasPageComponent } from './cinemas/cinemas-page.component';
 import { NotFoundPageComponent } from './not-found/not-found-page.component';
+import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'confirm-email', component: ConfirmEmailComponent },
   { path: 'home', component: ComponentsComponent },
   { path: 'user-profile', component: ProfileComponent },
   { path: 'signup', component: SignupComponent },

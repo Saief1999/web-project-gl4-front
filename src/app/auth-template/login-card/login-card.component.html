@@ -12,14 +12,14 @@
                 <div class="my-1">
                     <label class="form-label" for="">Email</label>
                     <input class="form-control" #emailInput="ngModel" ngModel type="text" required email name="email"
-                        placeholder="Your email">
+                        placeholder="Your email" (change)="setError()">
                     <app-error-message [text]="'Insert a valid email'" [condition]="emailInput.invalid && emailInput.touched">
                     </app-error-message>
                 </div>
                 <div class="my-1">
                     <label class="form-label" for="">Password</label>
                     <input class="form-control" ngModel type="password" required minlength="5" name="password"
-                        #passwordInput="ngModel" placeholder="your password">
+                        #passwordInput="ngModel" placeholder="your password" (change)="setError()">
                     <app-error-message [text]="'A password is at least 5 characters'"
                         [condition]="passwordInput.invalid && passwordInput.touched"></app-error-message>
                 </div>
@@ -29,8 +29,8 @@
             </form>
             <div class="d-block centered-text">
                 <p>
-                   Forgot password?
-                    <a [routerLink]="[ '/register/reset' ]">Reset</a>
+                    Don't have an account yet?
+                    <a [routerLink]="[ '/register/signup' ]">Register</a>
                 </p>
             </div>
         </div>

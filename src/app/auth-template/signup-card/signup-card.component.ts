@@ -25,6 +25,7 @@ export class SignupCardComponent implements OnInit {
 
   register(registrationForm: NgForm): void {
     this.registrationDto = registrationForm.value;
+    console.log(this.registrationDto)
     this.authenticationService.signup(this.registrationDto).subscribe(
       {
         "next": (data: RegistrationResponseDto) => {

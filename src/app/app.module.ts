@@ -17,6 +17,7 @@ import { SignupCardComponent } from './auth-template/signup-card/signup-card.com
 import { ErrorMessageComponent } from './auth-template/error-message/error-message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CinemasPageComponent } from './cinemas/cinemas-page.component';
+import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CinemasPageComponent } from './cinemas/cinemas-page.component';
     LoginCardComponent,
     SignupCardComponent,
     CinemasPageComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     BrowserModule,
