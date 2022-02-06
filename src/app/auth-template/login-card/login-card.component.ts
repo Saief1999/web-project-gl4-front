@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginResponseDto } from 'app/dto/login-response-dto';
 import { LoginDto } from 'app/dto/logindto';
-import { AuthenticationService } from 'app/serices/authentication.service';
+import { AuthenticationService } from 'app/services/authentication.service';
 
 @Component({
   selector: 'app-login-card',
@@ -12,7 +12,7 @@ import { AuthenticationService } from 'app/serices/authentication.service';
 export class LoginCardComponent implements OnInit {
 
   private loginDto: LoginDto = null;
-  private errorMessage: string = "";
+  errorMessage: string = "";
   constructor(
     private authenticationService: AuthenticationService
   ) { }

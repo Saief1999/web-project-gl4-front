@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
     private _router: Subscription;
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
+    private transparentNavbarPages = ['/home','/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found'];
+
     constructor(private renderer: Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element: ElementRef, public location: Location) { }
     ngOnInit() {
         var navbar: HTMLElement = this.element.nativeElement.children[0].children[0];
@@ -30,10 +32,12 @@ export class AppComponent implements OnInit {
             const number = window.scrollY;
             if (number > 150 || window.pageYOffset > 150) {
                 // add logic
-                navbar.classList.remove('navbar-transparent');
+                if (this.isNavbarTransparent())
+                    navbar.classList.remove('navbar-transparent');
             } else {
                 // remove logic
-                navbar.classList.add('navbar-transparent');
+                if (this.isNavbarTransparent())
+                    navbar.classList.add('navbar-transparent');
             }
         });
         var ua = window.navigator.userAgent;
@@ -50,14 +54,17 @@ export class AppComponent implements OnInit {
         }
 
     }
+
+    isNavbarTransparent() {
+        const pageUrl = this.location.prepareExternalUrl(this.location.path());
+
+        const transparentNavbarPages = ['/home','/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found'];
+        return transparentNavbarPages.findIndex((el) => el === pageUrl)  !== -1 ;
+    }
+
     removeFooter() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-        titlee = titlee.slice(1);
-        if (titlee === 'signup' || titlee === 'nucleoicons') {
-            return false;
-        }
-        else {
-            return true;
-        }
+        let pageUrl = this.location.prepareExternalUrl(this.location.path());
+        const noFooterPages = ['/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found'];
+        return noFooterPages.findIndex((el) => el === pageUrl)  === -1 ;
     }
 }

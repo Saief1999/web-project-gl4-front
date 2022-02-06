@@ -16,6 +16,7 @@ import { LoginCardComponent } from './auth-template/login-card/login-card.compon
 import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
 import { ErrorMessageComponent } from './auth-template/error-message/error-message.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CinemasPageComponent } from './cinemas/cinemas-page.component';
 import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-ema
     RegistrationPageComponent,
     LoginCardComponent,
     SignupCardComponent,
+    CinemasPageComponent,
     ErrorMessageComponent,
     ConfirmEmailComponent
   ],
