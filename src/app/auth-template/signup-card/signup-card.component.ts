@@ -3,7 +3,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationDto } from 'app/dto/registration-dto';
 import { RegistrationResponseDto } from 'app/dto/registration-response-dto';
-import { AuthenticationService } from 'app/serices/authentication.service';
+import { AuthenticationService } from 'app/services/authentication.service';
 
 @Component({
   selector: 'app-signup-card',
@@ -13,7 +13,7 @@ import { AuthenticationService } from 'app/serices/authentication.service';
 export class SignupCardComponent implements OnInit {
 
   private registrationDto: RegistrationDto = null;
-  private errorMessage: String = "";
+  errorMessage: String = "";
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router

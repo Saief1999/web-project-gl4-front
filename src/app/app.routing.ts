@@ -11,6 +11,8 @@ import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.compo
 import { RegistrationPageComponent } from './auth-template/registration-page/registration-page.component';
 import { LoginCardComponent } from './auth-template/login-card/login-card.component';
 import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
+import { CinemasPageComponent } from './cinemas/cinemas-page.component';
+import { NotFoundPageComponent } from './not-found/not-found-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,16 +28,21 @@ const routes: Routes = [
       { path: 'login', component: LoginCardComponent },
       { path: 'signup', component: SignupCardComponent }
     ]
-  }
+  },
+  { path: 'cinemas', component: CinemasPageComponent },
+  { path: '**', redirectTo: 'not-found' },
+  { path: 'not-found', component: NotFoundPageComponent }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: true
-    })
+    RouterModule.forRoot(routes, 
+    //   {
+    //   useHash: true
+    // }
+    )
   ],
   exports: [
   ],

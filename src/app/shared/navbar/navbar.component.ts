@@ -18,6 +18,13 @@ export class NavbarComponent implements OnInit {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
+    isNavbarTransparent() {
+        const pageUrl = this.location.prepareExternalUrl(this.location.path());
+
+        const transparentNavbarPages = ['/home','/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found'];
+        return transparentNavbarPages.findIndex((el) => el === pageUrl)  !== -1 ;
+    }
+
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
