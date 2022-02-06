@@ -1,5 +1,5 @@
 <div class="px-2 signin-card align-items-center">
-    <div *ngif="errorMessage" class="alert custom-alert-danger p-2">
+    <div *ngIf="errorMessage" class="alert custom-alert-danger p-2">
         {{ errorMessage }}
     </div>
     <h1>Login</h1>
@@ -8,14 +8,14 @@
         <div class="my-1">
             <label class="form-label" for="">Email</label>
             <input class="form-control" #emailInput="ngModel" ngModel type="text" required email name="email"
-                placeholder="Your email">
+                placeholder="Your email" (change)="setError()" >
             <app-error-message [text]="'Insert a valid email'" [condition]="emailInput.invalid && emailInput.touched">
             </app-error-message>
         </div>
         <div class="my-1">
             <label class="form-label" for="">Password</label>
             <input class="form-control" ngModel type="password" required minlength="5" name="password"
-                #passwordInput="ngModel" placeholder="your password">
+                #passwordInput="ngModel" placeholder="your password" (change)="setError()" >
             <app-error-message [text]="'A password is at least 5 characters'"
                 [condition]="passwordInput.invalid && passwordInput.touched"></app-error-message>
         </div>
