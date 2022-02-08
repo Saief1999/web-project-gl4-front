@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-6">
                         <label class="form-label" for="">Repeat your password</label>
-                        <input class="form-control" ngModel type="password" name="repeatedpassword" #repeatedPasswordInput="ngModel"
+                        <input class="form-control" ngModel type="password" name="repeatedPassword" #repeatedPasswordInput="ngModel"
                             required [pattern]="passwordInput.value" placeholder="repeat your password">
                         <app-error-message [text]="'please repeat the same password'"
                             [condition]="repeatedPasswordInput.invalid && repeatedPasswordInput.touched && repeatedPasswordInput.value != passwordInput.value">
