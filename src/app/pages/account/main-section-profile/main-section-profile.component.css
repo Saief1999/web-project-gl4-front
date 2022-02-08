@@ -1,0 +1,27 @@
+* *::after *::before {
+    box-sizing: border-box;
+    /* margin: 0;
+    padding: 0; */
+}
+
+.container{
+    display: flex;
+    margin-top: 50px;
+    border: solid 1px #ccc;
+    justify-content: center;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.row{
+    border: black solid 1px;
+    width:100%
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;
+}

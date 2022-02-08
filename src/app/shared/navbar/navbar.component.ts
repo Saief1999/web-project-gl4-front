@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
     isNavbarTransparent() {
         const pageUrl = this.location.prepareExternalUrl(this.location.path());
 
-        const transparentNavbarPages = ['/home','/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found'];
+        const transparentNavbarPages = ['/home','/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found', '/account'];
         return transparentNavbarPages.findIndex((el) => el === pageUrl)  !== -1 ;
     }
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router'
-import { LoginResponseDto } from 'app/dto/login-response-dto';
-import { LoginDto } from 'app/dto/logindto';
+import { LoginResponseDto } from 'app/dto/auth/login-response-dto';
+import { LoginDto } from 'app/dto/auth/logindto';
 import { AuthenticationService } from 'app/services/authentication.service';
 
 @Component({
