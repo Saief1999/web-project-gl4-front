@@ -9,15 +9,19 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
+import { AuthentificationInterceptorProvider } from "./interceptors/auth.interceptor";
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
-import { RegistrationPageComponent } from './auth-template/registration-page/registration-page.component';
-import { LoginCardComponent } from './auth-template/login-card/login-card.component';
-import { SignupCardComponent } from './auth-template/signup-card/signup-card.component';
-import { ErrorMessageComponent } from './auth-template/error-message/error-message.component';
+import { RegistrationPageComponent } from './pages/auth/registration-page.component';
+import { LoginCardComponent } from './pages/auth/login-card/login-card.component';
+import { SignupCardComponent } from './pages/auth/signup-card/signup-card.component';
+import { ErrorMessageComponent } from './pages/auth/error-message/error-message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CinemasPageComponent } from './cinemas/cinemas-page.component';
-import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
+import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.component';
+import { AccountPageComponent } from './pages/account/account-page.component';
+import { TopSectionComponent } from './pages/account/top-section/top-section.component';
+import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-ema
     SignupCardComponent,
     CinemasPageComponent,
     ErrorMessageComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    AccountPageComponent,
+    TopSectionComponent,
+    MainSectionProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,7 @@ import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-ema
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthentificationInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

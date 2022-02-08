@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegistrationDto } from 'app/dto/registration-dto';
-import { RegistrationResponseDto } from 'app/dto/registration-response-dto';
+import { RegistrationDto } from 'app/dto/auth/registration-dto';
+import { RegistrationResponseDto } from 'app/dto/auth/registration-response-dto';
 import { AuthenticationService } from 'app/services/authentication.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class SignupCardComponent implements OnInit {
       {
         "next": (data: RegistrationResponseDto) => {
           localStorage.setItem("token", data.token);
-          this.router.navigate(["home"]);
+          this.router.navigate(["account"]);
         },
         "error": (error) => {
           this.errorMessage = error.message;
