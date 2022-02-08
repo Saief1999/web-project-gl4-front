@@ -4,7 +4,7 @@ import { LoginResponseDto } from 'app/dto/login-response-dto';
 import { LoginDto } from 'app/dto/logindto';
 import { RegistrationDto } from 'app/dto/registration-dto';
 import { RegistrationResponseDto } from 'app/dto/registration-response-dto';
-import { LOGINLINK, REGISTRATIONLINK, EMAILCONFIRMATIONLINK } from '../../constants';
+import { LOGINLINK, REGISTRATIONLINK, EMAILCONFIRMATIONLINK, RESENDCONFIRMATIONLINK } from '../../constants';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -25,6 +25,14 @@ export class AuthenticationService {
   }
 
   confirmEmail(token : String): Observable<string>{
-    return this.http.post<string>(`${EMAILCONFIRMATIONLINK}?token=${token}`,{});
+    return this.http.post<string>(`${EMAILCONFIRMATIONLINK}`,{'token': token});
+  }
+
+  isAuthenticated(): boolean {
+    return !! localStorage.getItem('token');
+  }
+
+  resendConfirmation(): Observable<string>{
+    return this.http.get<string>(`${RESENDCONFIRMATIONLINK}`);
   }
 }

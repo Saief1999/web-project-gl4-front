@@ -30,7 +30,7 @@ export class SignupCardComponent implements OnInit {
       {
         "next": (data: RegistrationResponseDto) => {
           localStorage.setItem("token", data.token);
-          this.router.navigate(["home"]);
+          this.router.navigate(["account"]);
         },
         "error": (error) => {
           this.errorMessage = error.message;

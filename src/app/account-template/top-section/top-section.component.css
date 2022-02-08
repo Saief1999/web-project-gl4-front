@@ -1,0 +1,6 @@
+.cover-image-container{
+    background-image: url("assets/img/profile-cover.jpg");
+    background-position: center center;
+    position: relative;
+    z-index: 3;
+}

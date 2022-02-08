@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router'
 import { LoginResponseDto } from 'app/dto/login-response-dto';
 import { LoginDto } from 'app/dto/logindto';
 import { AuthenticationService } from 'app/services/authentication.service';
@@ -14,7 +15,8 @@ export class LoginCardComponent implements OnInit {
   private loginDto: LoginDto = null;
   errorMessage: string = "";
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class LoginCardComponent implements OnInit {
     this.authenticationService.login(this.loginDto).subscribe(
       (data: LoginResponseDto) => {
           localStorage.setItem('token', data.token)
-          console.log(data.token);
+          this.router.navigate(['/account'])
         },
       (error) => {
           this.errorMessage = error.error.message;

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
+import { AuthentificationInterceptorProvider } from "./interceptors/auth.interceptor";
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { RegistrationPageComponent } from './auth-template/registration-page/registration-page.component';
@@ -18,6 +19,8 @@ import { ErrorMessageComponent } from './auth-template/error-message/error-messa
 import { HttpClientModule } from '@angular/common/http';
 import { CinemasPageComponent } from './cinemas/cinemas-page.component';
 import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
+import { AccountPageComponent } from './account-template/account-page/account-page.component';
+import { TopSectionComponent } from './account-template/top-section/top-section.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-ema
     SignupCardComponent,
     CinemasPageComponent,
     ErrorMessageComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    AccountPageComponent,
+    TopSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-ema
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthentificationInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

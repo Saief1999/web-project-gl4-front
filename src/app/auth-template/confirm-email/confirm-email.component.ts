@@ -15,13 +15,14 @@ export class ConfirmEmailComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute) { }
 
     ngOnInit(): void {
-      this.activatedRoute.params.subscribe({
+      this.activatedRoute.queryParams.subscribe({
         next: (params) => {
-          const token = params['token']
+          console.log(params)
+          const token: string = params['token']
           this.authService.confirmEmail(token).subscribe({
             next : message => {
               console.log(message);
-              this.router.navigate(['/home']);
+              this.router.navigate(['/account']);
             }, 
             error: err => {
               console.error(err);
@@ -35,4 +36,10 @@ export class ConfirmEmailComponent implements OnInit {
 
   }
 
+    resendConfirmation(){
+      this.authService.resendConfirmation().subscribe({
+        'next': data => {console.log(data)},
+        'error': error => console.error(error)
+      })
+    }
 }

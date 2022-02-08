@@ -14,7 +14,7 @@ import { SignupCardComponent } from './auth-template/signup-card/signup-card.com
 import { CinemasPageComponent } from './cinemas/cinemas-page.component';
 import { NotFoundPageComponent } from './not-found/not-found-page.component';
 import { ConfirmEmailComponent } from './auth-template/confirm-email/confirm-email.component';
-
+import { AccountPageComponent } from './account-template/account-page/account-page.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'confirm-email', component: ConfirmEmailComponent },
@@ -31,6 +31,7 @@ const routes: Routes = [
       { path: 'signup', component: SignupCardComponent }
     ]
   },
+  { path: 'account', component: AccountPageComponent },
   { path: 'cinemas', component: CinemasPageComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
