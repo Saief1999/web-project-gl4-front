@@ -12,14 +12,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AuthentificationInterceptorProvider } from "./interceptors/auth.interceptor";
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
-import { RegistrationPageComponent } from './pages/auth/registration-page/registration-page.component';
+import { RegistrationPageComponent } from './pages/auth/registration-page.component';
 import { LoginCardComponent } from './pages/auth/login-card/login-card.component';
 import { SignupCardComponent } from './pages/auth/signup-card/signup-card.component';
 import { ErrorMessageComponent } from './pages/auth/error-message/error-message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CinemasPageComponent } from './cinemas/cinemas-page.component';
 import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.component';
-import { AccountPageComponent } from './pages/account/account-page/account-page.component';
+import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';
 import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
 
