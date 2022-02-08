@@ -17,8 +17,8 @@ import { LoginCardComponent } from './pages/auth/login-card/login-card.component
 import { SignupCardComponent } from './pages/auth/signup-card/signup-card.component';
 import { ErrorMessageComponent } from './pages/auth/error-message/error-message.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CinemasPageComponent } from './cinemas/cinemas-page.component';
-import { CinemaElementComponent } from "./cinemas/sub-components/cinema-element.component"
+import { CinemasPageComponent } from './pages/cinemas/cinemas-page.component';
+import { CinemaElementComponent } from "./pages/cinemas/cinema-element/cinema-element.component"
 import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.component';
 import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';

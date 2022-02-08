@@ -11,7 +11,7 @@ import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.compo
 import { RegistrationPageComponent } from './pages/auth/registration-page.component';
 import { LoginCardComponent } from './pages/auth/login-card/login-card.component';
 import { SignupCardComponent } from './pages/auth/signup-card/signup-card.component';
-import { CinemasPageComponent } from './cinemas/cinemas-page.component';
+import { CinemasPageComponent } from './pages/cinemas/cinemas-page.component';
 import { NotFoundPageComponent } from './not-found/not-found-page.component';
 import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.component';
 import { AccountPageComponent } from './pages/account/account-page.component';
