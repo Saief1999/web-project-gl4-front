@@ -1,4 +1,5 @@
-export const LOGINLINK = 'http://localhost:3000/login';
-export const REGISTRATIONLINK = 'http://localhost:3000/signup'
-export const EMAILCONFIRMATIONLINK = 'http://localhost:3000/confirm'
-export const RESENDCONFIRMATIONLINK = 'http://localhost:3000/resend-confirmation-link'
+export const BACKEND_URL = "http://localhost:3000";
+export const LOGINLINK = `${BACKEND_URL}/login`;
+export const REGISTRATIONLINK = `${BACKEND_URL}/signup`;
+export const EMAILCONFIRMATIONLINK = `${BACKEND_URL}/confirm`;
+export const RESENDCONFIRMATIONLINK = `${BACKEND_URL}/resend-confirmation-link`;

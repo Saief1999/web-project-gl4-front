@@ -1,18 +1,24 @@
-<div class="card card-plain mt-5">
+<div class="card card-plain">
     <div class="row">
         <div class="col-md-5">
             <div class="card-image">
-                <img src="assets/img/uriel-soberanes.jpg" alt="cinema">
+                <!-- <img src="assets/img/uriel-soberanes.jpg" alt="cinema"> -->
+                <img [src]="cinema.imageUrl" alt="cinema">
+
             </div>
         </div>
 
         <div class="col-md-7">
             <div  class="card-body">
-                <h6  class="card-category text-info">
-                    <span *ngIf="cinema.isOpen">Open</span>
-                    <span *ngIf="!cinema.isOpen">Closed</span>
-                </h6>
-                <h3  class="card-title">
+                <div *ngIf="cinema.isOpen; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <h6 class="card-category text-info">Open</h6>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <h6 class="card-category text-danger">Closed</h6>
+                    </ng-template>
+
+                <h3 class="card-title">
                     <a  href="#">
                         {{ cinema.name }}
                     </a>
@@ -24,7 +30,7 @@
 
                 <p  class="card-description"> 
                     {{ cinema.description }}
-                    <a  [routerLink]="['/cinemas/'+cinema.id]"> Read More </a>
+                    <!-- <a  [routerLink]="['/cinemas/'+cinema.id]"> Read More </a> -->
                 </p>
         </div>
     </div>

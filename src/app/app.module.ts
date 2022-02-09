@@ -23,6 +23,7 @@ import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.
 import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';
 import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
+import { HttpErrorInterceptorProvider } from './interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { MainSectionProfileComponent } from './pages/account/main-section-profil
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [AuthentificationInterceptorProvider],
+  providers: [AuthentificationInterceptorProvider, HttpErrorInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

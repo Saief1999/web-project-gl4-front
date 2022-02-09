@@ -5,6 +5,7 @@ export class CinemaListItem {
     name: string;
     description: string;
     isOpen: boolean;
+    imageUrl: string;
 
 
     // constructor(id: string, name: string, description:string, openingTime:string, closingTime: string) {
