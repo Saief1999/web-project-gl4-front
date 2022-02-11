@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -23,6 +23,7 @@ import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.
 import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';
 import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
+import { AccountFormComponent } from './pages/account/account-form/account-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MainSectionProfileComponent } from './pages/account/main-section-profil
     ConfirmEmailComponent,
     AccountPageComponent,
     TopSectionComponent,
-    MainSectionProfileComponent
+    MainSectionProfileComponent,
+    AccountFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { MainSectionProfileComponent } from './pages/account/main-section-profil
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [AuthentificationInterceptorProvider],
   bootstrap: [AppComponent]
