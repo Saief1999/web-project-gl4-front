@@ -3,8 +3,9 @@
         <div class="col-md-5">
             <div class="card-image">
                 <!-- <img src="assets/img/uriel-soberanes.jpg" alt="cinema"> -->
-                <img [src]="cinema.imageUrl" alt="cinema">
-
+                <a [routerLink]="['/cinemas/'+cinema.id]">
+                    <img  [src]="cinema.imageUrl" alt="cinema">
+                </a>
             </div>
         </div>
 
@@ -18,11 +19,11 @@
                         <h6 class="card-category text-danger">Closed</h6>
                     </ng-template>
 
-                <h3 class="card-title">
+                <h2 class="card-title">
                     <a  href="#">
                         {{ cinema.name }}
                     </a>
-                </h3>
+                </h2>
                 <!-- <p  class="card-description"> 
                     Sharing processing, display and sensors across smartphones and tethered smartglasses gives you two batteries, each powering fewer individual systems. If they’re connected by a cable, this could give a healthy bump to battery life — and… 
                     <a  href="#"> Read More </a>
