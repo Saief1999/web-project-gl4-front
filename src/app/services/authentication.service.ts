@@ -4,8 +4,15 @@ import { LoginResponseDto } from 'app/dto/auth/login-response-dto';
 import { LoginDto } from 'app/dto/auth/logindto';
 import { RegistrationDto } from 'app/dto/auth/registration-dto';
 import { RegistrationResponseDto } from 'app/dto/auth/registration-response-dto';
-import { LOGINLINK, REGISTRATIONLINK, EMAILCONFIRMATIONLINK, RESENDCONFIRMATIONLINK } from '../../constants';
+import { 
+    LOGINLINK, 
+    REGISTRATIONLINK, 
+    EMAILCONFIRMATIONLINK, 
+    RESENDCONFIRMATIONLINK,
+    ACCOUNTPROFILELINK 
+  } from '../../constants';
 import { Observable } from 'rxjs';
+import { User } from 'app/models/user.model';
 
 @Injectable({
   providedIn: 'root'

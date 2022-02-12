@@ -23,8 +23,7 @@ import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.
 import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';
 import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
-import { AccountFormComponent } from './pages/account/account-form/account-form.component';
-
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +39,6 @@ import { AccountFormComponent } from './pages/account/account-form/account-form.
     AccountPageComponent,
     TopSectionComponent,
     MainSectionProfileComponent,
-    AccountFormComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +49,8 @@ import { AccountFormComponent } from './pages/account/account-form/account-form.
     ExamplesModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    Ng2PageScrollModule
   ],
   providers: [AuthentificationInterceptorProvider],
   bootstrap: [AppComponent]

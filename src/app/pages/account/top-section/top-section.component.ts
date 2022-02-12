@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'app/models/user.model';
 
 @Component({
   selector: 'app-top-section',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class TopSectionComponent implements OnInit {
 
   constructor() { }
-
+  @Input() user: User = new User();
   ngOnInit(): void {
   }
 

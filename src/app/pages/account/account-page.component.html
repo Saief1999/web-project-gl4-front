@@ -1,2 +1,2 @@
-<app-top-section></app-top-section>
-<app-main-section-profile></app-main-section-profile>
+<app-top-section [user]="user"></app-top-section>
+<app-main-section-profile (submitGeneralInfoEvent)="changeUser($event)" [user]="user"></app-main-section-profile>

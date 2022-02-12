@@ -21,3 +21,7 @@ li:hover{
     background-color: #ccc;
     color: white;
 }
+
+input.ng-invalid.ng-touched{
+    border: red 1px solid;
+}
