@@ -15,6 +15,8 @@ import { CinemasPageComponent } from './pages/cinemas/cinemas-page.component';
 import { NotFoundPageComponent } from './not-found/not-found-page.component';
 import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.component';
 import { AccountPageComponent } from './pages/account/account-page.component';
+import { MoviesPageComponent } from './pages/movies/movies-page.component';
+import { MoviePageComponent } from './pages/movie/movie-page.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'confirm-email', component: ConfirmEmailComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
   },
   { path: 'account', component: AccountPageComponent },
   { path: 'cinemas', component: CinemasPageComponent },
+  { path: 'movies', component: MoviesPageComponent },
+  { path: 'movies/:id', component: MoviePageComponent},
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
 ];
