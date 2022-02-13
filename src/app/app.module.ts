@@ -28,6 +28,7 @@ import { MovieElementComponent } from './pages/movies/movie-element/movie-elemen
 import { MoviesPageComponent } from './pages/movies/movies-page.component';
 import { MoviePageComponent } from './pages/movie/movie-page.component';
 
+import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { MoviePageComponent } from './pages/movie/movie-page.component';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularMultiSelectModule,
   ],
   providers: [AuthentificationInterceptorProvider, HttpErrorInterceptorProvider],
   bootstrap: [AppComponent]

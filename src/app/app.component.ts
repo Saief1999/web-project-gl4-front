@@ -5,6 +5,9 @@ import 'rxjs/add/operator/filter';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { genres } from './utilities/store';
+import { GenresService } from './services/genres.service';
+import { Genre } from './dto/genres/genre';
 
 @Component({
     selector: 'app-root',
@@ -17,8 +20,9 @@ export class AppComponent implements OnInit {
 
     private transparentNavbarPages = ['/home','/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found'];
 
-    constructor(private renderer: Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element: ElementRef, public location: Location) { }
+    constructor(private renderer: Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element: ElementRef, public location: Location, private genresService: GenresService) { }
     ngOnInit() {
+        this.listGenres(); // get the genres list from the backend
         var navbar: HTMLElement = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
             if (window.outerWidth > 991) {
@@ -50,9 +54,7 @@ export class AppComponent implements OnInit {
         if (version) {
             var body = document.getElementsByTagName('body')[0];
             body.classList.add('ie-background');
-
         }
-
     }
 
     isNavbarTransparent() {
@@ -66,5 +68,11 @@ export class AppComponent implements OnInit {
         let pageUrl = this.location.prepareExternalUrl(this.location.path());
         const noFooterPages = ['/register/login' ,'/register/signup' ,'/nucleoicons', '/not-found'];
         return noFooterPages.findIndex((el) => el === pageUrl)  === -1 ;
+    }
+
+    listGenres() {
+        this.genresService.listGenres().subscribe((genresResult:Genre[]) => {
+            genres.next(genresResult);
+        })
     }
 }

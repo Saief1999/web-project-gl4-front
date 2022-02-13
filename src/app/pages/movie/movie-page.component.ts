@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Genre } from "app/dto/genres/genre";
 import { MovieDetails } from "app/dto/movies/movie-details";
 import { MoviesService } from "app/services/movies.service";
+import { genres } from "app/utilities/store";
+import { TMDB_IMG_URI } from "../../../constants";
 
 @Component({
     selector: "app-movie",
@@ -11,12 +14,22 @@ import { MoviesService } from "app/services/movies.service";
 export class MoviePageComponent implements OnInit{
     constructor(
         private router: Router,
+        private activatedRoute: ActivatedRoute,
         private moviesService:MoviesService
       ) { }
     
     movie: MovieDetails;
+    movieImage():string {
+        return TMDB_IMG_URI + this.movie.poster_path;
+      }
 
     ngOnInit(): void {
+        this.activatedRoute.params.subscribe(params => {
+            const id:number = params["id"];
+            this.moviesService.getMovie(id).subscribe((movie:MovieDetails) => {
+                this.movie = movie;
+            })
+        })
     }
 
 }

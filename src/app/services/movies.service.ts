@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { stringify } from "querystring";
 import { BACKEND_URL } from "../../constants";
 
 @Injectable({
@@ -16,10 +15,25 @@ export class MoviesService {
         return this.http.get(this.moviesUri);
     }
 
-    searchMovies(query:string) {
+    searchMovies(query:string, page:number=1) {
         return this.http.get(`${this.moviesUri}/search`,{
-            params: {query}
+            params: {query, page: (page+"") }
         })
     }
 
+    listPopularMovies(page:number=1) {
+        return this.http.get(`${this.moviesUri}/popular`, {
+            params: { page: page + "" }
+        })
+    }
+
+    listTopRatedMovies(page: number=1) {
+        return this.http.get(`${this.moviesUri}/top_rated`, {
+            params: { page: page + "" }
+        })
+    }
+
+    getMovie(id:number) {
+        return this.http.get(`${this.moviesUri}/${id}`)
+    }
 }

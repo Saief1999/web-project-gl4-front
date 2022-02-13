@@ -1,5 +1,3 @@
-import { ThrowStmt } from "@angular/compiler";
-
 export class CinemaListItem {
     id: string;
     name: string;

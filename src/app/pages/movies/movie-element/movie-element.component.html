@@ -1,18 +1,20 @@
 <div class="mt-4">
-<a [routerLink]="['movies/'+movie.id]">
-    <figure>
-        <img class="img-rounded img-resp" [src]="movieImage()">
-    </figure>
-    <figcaption>
-        <span class="icon-star"></span>
-        <h4 class="rating">6.5/10</h4>
-        <h4>Comedy</h4>
-        <h4>Drama</h4>
-        <span class="">View Details</span>
-    </figcaption>
+<a [routerLink]="[movie.id]">
+   <div class="image-container">
+        <img class="img-rounded img-resp" 
+        [src]="movieImage()">
+        
+        <div class="image-caption">
+            <div class="icon-star d-flex justify-content-center align-items-center">★</div>
+            <div class="rating d-flex justify-content-center">{{movie.vote_average}} / 10</div>
+            <div *ngFor="let genreId of movie.genre_ids.slice(0,2)" class="genre d-flex justify-content-center">
+                {{ genreName(genreId) }}
+            </div>
+        </div>
+    </div>
 </a>
 <div class="img-description">
-    <a [routerLink]="['movies/'+movie.id]">
+    <a [routerLink]="[movie.id]">
         <span class="movie-title card-title">{{movie.title}}</span>
     </a>
 </div>
