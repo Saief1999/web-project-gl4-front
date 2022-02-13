@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'app/models/user.model';
-import { ACCOUNTPROFILELINK, PASSWORDUPDATELINK } from '../../constants';
+import { ACCOUNTPROFILELINK, PASSWORDUPDATELINK, PASSWORDVERIFICATIONLINK } from '../../constants';
 import { Observable } from 'rxjs';
 import { AccountUpdateResponseDto } from 'app/dto/account/account-update-response.dto';
 import { AccountUpdateRequestDto } from 'app/dto/account/account-update-request.dto';
 import { PasswordUpdateRequestDto } from 'app/dto/account/password-update-request.dto';
 import { PasswordUpdateResponseDto } from 'app/dto/account/password-update-response.dto';
+import { VerificationCodeRequestDto } from 'app/dto/account/verification-code-request.dto';
+import { VerificationCodeResponseDto } from 'app/dto/account/verification-code-response.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,10 @@ export class AccountService {
   }
 
   updateCurrentAccountPassword(payload : PasswordUpdateRequestDto): Observable<PasswordUpdateResponseDto>{
-    return this.http.put<PasswordUpdateResponseDto>(PASSWORDUPDATELINK, payload)
+    return this.http.post<PasswordUpdateResponseDto>(PASSWORDUPDATELINK, payload)
+  }
+
+  confirmUpdatingPassword(payload: VerificationCodeRequestDto): Observable<VerificationCodeResponseDto>{
+    return this.http.put<VerificationCodeResponseDto>(PASSWORDVERIFICATIONLINK, payload);
   }
 }

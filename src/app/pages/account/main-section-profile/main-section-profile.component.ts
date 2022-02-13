@@ -5,6 +5,7 @@ import { GenderEnum, User } from 'app/models/user.model';
 import { AccountService } from 'app/services/account.service';
 import { EventEmitter } from '@angular/core';
 import { PasswordUpdateRequestDto } from 'app/dto/account/password-update-request.dto';
+import { VerificationCodeRequestDto } from 'app/dto/account/verification-code-request.dto';
 
 @Component({
   selector: 'app-main-section-profile',
@@ -46,6 +47,13 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
       Validators.minLength(5),
     ]),
   });
+  verificationCodeForm = new FormGroup({
+    'verificationCode': new FormControl('', [
+      Validators.required,
+      Validators.min(10000),
+      Validators.max(99999)
+    ])
+  })
 
   passwordsMatching: boolean = true;
 
@@ -106,7 +114,11 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
   clickConfirmation(){
     this.generalInformationconfirmationStatus = !this.generalInformationconfirmationStatus;
   }
-
+  
+  clickPasswordConfirmation(){
+    this.passwordInformationConfirmationStatus = !this.passwordInformationConfirmationStatus;
+  }
+  
   submitGeneralChanges(){
     const payload: AccountUpdateRequestDto = this.generalInformationForm.value as AccountUpdateRequestDto; 
     this.accountService.updateCurrentAccountGeneralInfo(payload).subscribe({
@@ -116,6 +128,9 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
         this.submitGeneralInfoEvent.emit(user)
         this.generalInformationForm.markAsPristine()
         this.generalInformationconfirmationStatus = false
+      }, 
+      error: err => {
+        console.error(err);
       }
     })
   }
@@ -125,11 +140,24 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
     this.accountService.updateCurrentAccountPassword(payload).subscribe({
       next: data => {
         this.passwordConfirmationCodeVisibility = true;
+      }, 
+      error: err => {
+        console.error(err);
       }
     })
   }
-
-  clickPasswordConfirmation(){
-    this.passwordInformationConfirmationStatus = !this.passwordInformationConfirmationStatus;
+  submitVerification(){
+    const payload : VerificationCodeRequestDto = this.verificationCodeForm.value as VerificationCodeRequestDto;
+    this.accountService.confirmUpdatingPassword(payload).subscribe({
+      next : data => {
+        this.passwordForm.reset();
+        this.verificationCodeForm.reset();
+        this.passwordConfirmationCodeVisibility = false;
+        console.log(data.message)
+      }, 
+      error: err => {
+        console.error(err);
+      }
+    })
   }
 }
