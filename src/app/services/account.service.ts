@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'app/models/user.model';
-import { ACCOUNTPROFILELINK } from '../../constants';
+import { ACCOUNTPROFILELINK, PASSWORDUPDATELINK } from '../../constants';
 import { Observable } from 'rxjs';
 import { AccountUpdateResponseDto } from 'app/dto/account/account-update-response.dto';
 import { AccountUpdateRequestDto } from 'app/dto/account/account-update-request.dto';
+import { PasswordUpdateRequestDto } from 'app/dto/account/password-update-request.dto';
+import { PasswordUpdateResponseDto } from 'app/dto/account/password-update-response.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +21,9 @@ export class AccountService {
 
   updateCurrentAccountGeneralInfo(payload: AccountUpdateRequestDto): Observable<AccountUpdateResponseDto>{
     return this.http.put<AccountUpdateResponseDto>(ACCOUNTPROFILELINK, payload)
+  }
+
+  updateCurrentAccountPassword(payload : PasswordUpdateRequestDto): Observable<PasswordUpdateResponseDto>{
+    return this.http.put<PasswordUpdateResponseDto>(PASSWORDUPDATELINK, payload)
   }
 }

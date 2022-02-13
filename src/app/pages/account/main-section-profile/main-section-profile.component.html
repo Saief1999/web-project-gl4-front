@@ -8,13 +8,13 @@
             </ul>
         </div>
         <div class="col-8">
-            <div id="general-info-section">
+            <div id="general-info-section" class="p-5">
                 <h2 class="text-center">General Information</h2>
                 <form [formGroup]="generalInformationForm" class="mt-3" (ngSubmit)="submitGeneralChanges()">
                     <div class="form-group w-100">
                         <label for="username">Username: </label>
                         <input id="username" type="text" class="form-control" formControlName='username'>
-                        <div *ngIf="!getUsernameInput().valid">
+                        <div *ngIf="!getUsernameInput().valid && getUsernameInput().touched">
                             <span style="color: red;">Invalid username</span>
                         </div>
                     </div>
@@ -22,14 +22,14 @@
                         <div class="form-group w-40 col">
                             <label for="firstname">First name: </label>
                             <input id="firstname" type="text" class="form-control" formControlName='firstname'>
-                            <div *ngIf="!getFirstnameInput().valid">
+                            <div *ngIf="!getFirstnameInput().valid && getFirstnameInput().touched">
                                 <span style="color: red;">Invalid firstname</span>
                             </div>
                         </div>
                         <div class="form-group w-40 col">
                             <label for="lastname">Last name: </label>
                             <input id="lastname" type="text" class="form-control" formControlName='lastname'>
-                            <div *ngIf="!getLastnameInput().valid">
+                            <div *ngIf="!getLastnameInput().valid && getLastnameInput().touched">
                                 <span style="color: red;">Invalid lastname</span>
                             </div>
                         </div>
@@ -52,10 +52,10 @@
                         <input type="checkbox" class="mr-2" [checked]="generalInformationconfirmationStatus" (click)="clickConfirmation()" id="confirmation">
                         <label for="confirmation">Are you sure you want to submit these changes</label>
                     </div>
-                    <button type="submit" [disabled]="!(generalInformationconfirmationStatus && generalInformationForm.valid && generalInformationForm.dirty)" class="btn btn-success btn-round btn-lg">Submit Changes</button>
+                    <button type="submit" [disabled]="generalInformationDisabled" class="btn btn-success btn-round btn-lg">Submit Changes</button>
                 </form>
             </div>
-            <div id="email-section" class="email-section">
+            <div id="email-section" class="email-section p-5" style="height: 100vh;">
                 <h2 class="text-center my-4">Email Settings</h2>
                 Your current email is
                 <table class="table mt-2">
@@ -68,25 +68,51 @@
                 <button class="btn btn-primary btn-round">Click here</button> If you want to change it
                 <div class="mb-5"></div>
             </div>
-            <div id="password-section">
+            <div id="password-section" class="p-5">
                 <h2 class="text-center my-4">Password Settings</h2>
-                <form [formGroup]="passwordForm">
+                <form [formGroup]="passwordForm" (ngSubmit)="submitPasswordChanges()">
                     <div class="form-group">
                         <label for="current-password">Current password: </label>
                         <input id="current-password" type="password" class="form-control" formControlName="currentPassword">
+                        <div *ngIf="!getPasswordInput().valid && getPasswordInput().touched">
+                            <span style="color: red;">Invalid password</span>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="form-group w-40 col">
                             <label for="new-password">New passord: </label>
                             <input id="new-password" type="password" class="form-control" formControlName="newPassword">
+                            <div *ngIf="!getNewPasswordInput().valid && getNewPasswordInput().touched">
+                                <span style="color: red;">Invalid new password</span>
+                            </div>
                         </div>
                         <div class="form-group w-40 col">
                             <label for="confirm-password">Confirm password: </label>
-                            <input id="confirm-password" type="password" class="form-control"formControlName="confirmPassword">
+                            <input id="confirm-password" type="password" [ngClass]="{ 'custom-ng-invalid': !passwordsMatching }" class="form-control"formControlName="confirmPassword" >
+                            <div *ngIf="(!getConfirmationPasswordInput().valid ||!passwordsMatching ) && getConfirmationPasswordInput().touched">
+                                <span style="color: red;">invalid Password Confirmation</span>
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success btn-round btn-lg">Change</button>
+                    <div class="form-group">
+                        <input type="checkbox" class="mr-2" [checked]="passwordInformationConfirmationStatus" (click)="clickPasswordConfirmation()"
+                            id="confirmation">
+                        <label for="confirmation">Are you sure you want to submit these changes</label>
+                    </div>
+                    <button type="submit" [disabled]="passwordInformationDisabled" class="btn btn-success btn-round btn-lg">Change</button>
                 </form>
+                <div id="code-confirmation" *ngIf="passwordConfirmationCodeVisibility">
+                    <h3>Almost there !</h3>
+                    <p>Check your Email for a verification code that you need to provide here</p>
+                    <p>Note that if you leave this page that code won't be helpful any more but the old password will be maintained</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="">Verification Code</label>
+                            <input type="text" class="ml-2 form-control-sm">
+                        </div>
+                        <button type="submit" class="btn btn-success btn-round btn-lg">Verify</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
