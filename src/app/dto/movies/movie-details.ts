@@ -1,6 +1,8 @@
-import { Movie } from "./movie";
+import { Genre } from "../genres/genre";
+import { BasicMovie, Movie } from "./movie";
 
-export class MovieDetails extends Movie {
+export class MovieDetails extends BasicMovie {
+    genres: Genre[]
     belongs_to_collection: null | object;
     budget: number;
     hompage: string | null;
@@ -12,6 +14,15 @@ export class MovieDetails extends Movie {
     spoken_languages: Language[];
     status: status;
     tagline: string | null;
+
+    constructor() {
+        super();
+        this.release_date = new Date().getFullYear() + ""
+        this.title = "";
+        this.overview = "";
+        this.vote_average = 0;
+        this.poster_path = null;
+    }
 }
 
 class Company {

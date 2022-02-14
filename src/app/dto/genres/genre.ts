@@ -1,5 +1,8 @@
 export class Genre {
-    _id: string;
     id: number;
     name: string;
+}
+
+export class DbGenre extends Genre{
+    _id: string;
 }
