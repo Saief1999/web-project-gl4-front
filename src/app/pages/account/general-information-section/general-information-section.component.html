@@ -1,4 +1,22 @@
 <h2 class="text-center">General Information</h2>
+<div *ngIf="errorMessage !== ''" class="alert alert-danger my-2 text-center">
+    <div class="container">
+        <i class="nc-bell-55 nc-icon"></i>
+        {{ errorMessage }}
+        <button type="button" class="close" (click)="removeMessage()">
+            <i class="nc-icon nc-simple-remove"></i>
+        </button>
+    </div>
+</div>
+<div *ngIf="successMessage !== ''" class="alert alert-success my-2 text-center">
+    <div class="container">
+        <i class="nc-bell-55 nc-icon"></i>
+        {{ successMessage }}
+        <button type="button" class="close" (click)="removeMessage()">
+            <i class="nc-icon nc-simple-remove"></i>
+        </button>
+    </div>
+</div>
 <form [formGroup]="generalInformationForm" class="mt-3" (ngSubmit)="submitGeneralChanges()">
     <div class="form-group w-100">
         <label for="username">Username: </label>

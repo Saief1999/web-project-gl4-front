@@ -32,6 +32,9 @@ export class PasswordSectionComponent implements OnInit {
     ])
   })
 
+  errorMessage: string = ''
+  successMessage: string = ''
+
   passwordsMatching: boolean = true;
 
   passwordInformationConfirmationStatus: boolean = false;
@@ -48,6 +51,11 @@ export class PasswordSectionComponent implements OnInit {
   ngDoCheck(): void {
     this.passwordsMatching = this.passwordForm.get('newPassword').value === this.passwordForm.get('confirmPassword').value
     this.passwordInformationDisabled = !(this.passwordForm.valid && this.passwordForm.touched && this.passwordsMatching && this.passwordInformationConfirmationStatus)
+  }
+
+  removeMessage(){
+    this.errorMessage = '';
+    this.successMessage = '';
   }
   getPasswordInput() {
     return this.passwordForm.get('currentPassword')
@@ -69,9 +77,10 @@ export class PasswordSectionComponent implements OnInit {
     this.accountService.updateCurrentAccountPassword(payload).subscribe({
       next: data => {
         this.passwordConfirmationCodeVisibility = true;
+        this.successMessage = data.message;
       },
       error: err => {
-        console.error(err);
+        this.errorMessage = err.split(': ')[2];
       }
     })
   }
@@ -83,10 +92,10 @@ export class PasswordSectionComponent implements OnInit {
         this.verificationCodeForm.reset();
         this.passwordConfirmationCodeVisibility = false;
         this.passwordInformationConfirmationStatus = false;
-        console.log(data.message)
+        this.successMessage= data.message;
       },
       error: err => {
-        console.error(err);
+        this.errorMessage = err.split(': ')[2];
       }
     })
   }

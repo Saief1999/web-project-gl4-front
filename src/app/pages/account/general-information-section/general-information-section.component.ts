@@ -32,8 +32,9 @@ export class GeneralInformationSectionComponent implements OnInit, DoCheck, OnCh
   generalInformationconfirmationStatus: boolean = false;
   generalInformationDisabled: boolean = true;
   genders: GenderEnum[] = [GenderEnum.male, GenderEnum.female, GenderEnum.undeclared]
+  errorMessage: string = ''
+  successMessage: string = ''
   @Input() user: User = new User();
-
   @Output() submitGeneralInfoEvent: EventEmitter<User> = new EventEmitter();
 
   constructor(private readonly accountService: AccountService) { }
@@ -42,6 +43,10 @@ export class GeneralInformationSectionComponent implements OnInit, DoCheck, OnCh
   }
 
   ngOnChanges(): void {
+    this.populateForm()
+  }
+
+  populateForm(){
     const { username, firstname, lastname, gender, birthday, quote } = this.user;
     this.generalInformationForm.get('username').setValue(username)
     this.generalInformationForm.get('firstname').setValue(firstname)
@@ -49,6 +54,11 @@ export class GeneralInformationSectionComponent implements OnInit, DoCheck, OnCh
     this.generalInformationForm.get('gender').setValue(gender)
     this.generalInformationForm.get('birthday').setValue(birthday)
     this.generalInformationForm.get('quote').setValue(quote)
+  }
+
+  removeMessage(){
+    this.errorMessage = '';
+    this.successMessage = '';
   }
 
   ngDoCheck(): void {
@@ -80,9 +90,11 @@ export class GeneralInformationSectionComponent implements OnInit, DoCheck, OnCh
         this.submitGeneralInfoEvent.emit(user)
         this.generalInformationForm.markAsPristine()
         this.generalInformationconfirmationStatus = false
+        this.successMessage = "Profile updated successfully"
       },
       error: err => {
-        console.error(err);
+        this.populateForm()
+        this.errorMessage = err.split(': ')[2];
       }
     })
   }

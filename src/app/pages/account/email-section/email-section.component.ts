@@ -29,6 +29,8 @@ export class EmailSectionComponent implements OnInit, DoCheck {
   emailConfirmationCodeVisibility: boolean = false;
   emailInformationConfirmationStatus: boolean = false;
   emailInformationDisabled: boolean = true;
+  errorMessage: string = '';
+  successMessage: string = '';
   @Input() user: User = new User();
   @Output() emailChangeEvent: EventEmitter<User> = new EventEmitter()
   constructor(private readonly accountService: AccountService) { }
@@ -38,6 +40,10 @@ export class EmailSectionComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.emailInformationDisabled = !(this.newEmailForm.valid && this.newEmailForm.touched && this.emailInformationConfirmationStatus)
+  }
+  removeMessage(){
+    this.errorMessage = ''
+    this.successMessage = ''
   }
   setEmailFormVisibility() {
     this.emailFormVisibility = !this.emailFormVisibility;
@@ -51,6 +57,10 @@ export class EmailSectionComponent implements OnInit, DoCheck {
     this.accountService.updateEmail(payload).subscribe({
       next: data => {
         this.emailConfirmationCodeVisibility = true;
+        this.successMessage = data.message;
+      }, 
+      error: err => {
+        this.errorMessage = err.split(': ')[2];
       }
     })
   }
@@ -68,7 +78,11 @@ export class EmailSectionComponent implements OnInit, DoCheck {
         this.emailFormVisibility = false;
         this.emailConfirmationCodeVisibility = false;
         this.emailInformationConfirmationStatus = false;
-      }
+        this.successMessage = "Email changed Successfully"
+      }, 
+      error: err => {
+        this.errorMessage = err.split(': ')[2];
+      } 
     })
   }
 
