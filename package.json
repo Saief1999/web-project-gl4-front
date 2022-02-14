@@ -34,6 +34,7 @@
     "jw-bootstrap-switch-ng2": "2.0.5",
     "ng2-nouislider": "1.8.2",
     "ng2-page-scroll": "^4.0.0-beta.12",
+    "ngx-infinite-scroll": "^10.0.1",
     "ngx-page-scroll": "^8.0.0",
     "nouislider": "14.6.3",
     "popper.js": "1.16.1",

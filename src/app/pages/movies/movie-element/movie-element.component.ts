@@ -19,6 +19,8 @@ export class MovieElementComponent implements OnInit {
   @Input() movie:Movie;
   
   movieImage():string {
+    if (!this.movie.poster_path)
+      return null ;
     return TMDB_IMG_URI + this.movie.poster_path;
   }
 
