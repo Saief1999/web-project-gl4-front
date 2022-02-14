@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit, DoCheck{
 
     ngDoCheck(){
         this.isAuthenticated = this.authService.isAuthenticated();
-        console.log(this.isAuthenticated)
+        // console.log(this.isAuthenticated)
         if (this.isAuthenticated) {
             const tokenPayload: TokenPayloadDto = this.authService.getTokenPayload()
             this.role = tokenPayload.role;

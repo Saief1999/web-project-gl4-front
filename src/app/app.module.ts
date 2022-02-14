@@ -35,6 +35,8 @@ import { MoviePageComponent } from './pages/movie/movie-page.component';
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.component';
+import { defaultImagePipe } from './pipes/default-image.pipe';
+import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +60,7 @@ import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.componen
     GeneralInformationSectionComponent,
     EmailSectionComponent,
     PasswordSectionComponent,
+    defaultImagePipe,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.componen
     HttpClientModule,
     AngularMultiSelectModule,
     ReactiveFormsModule, 
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    InfiniteScrollModule
   ],
   providers: [AuthentificationInterceptorProvider, HttpErrorInterceptorProvider],
   bootstrap: [AppComponent]

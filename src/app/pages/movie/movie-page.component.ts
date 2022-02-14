@@ -20,6 +20,8 @@ export class MoviePageComponent implements OnInit{
     
     movie: MovieDetails;
     movieImage():string {
+        if (this.movie.poster_path === null)
+            return null ;
         return TMDB_IMG_URI + this.movie.poster_path;
       }
 
