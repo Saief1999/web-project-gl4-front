@@ -24,6 +24,8 @@ import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';
 import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
 import { HttpErrorInterceptorProvider } from './interceptors/http-error.interceptor';
+import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
+import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { HttpErrorInterceptorProvider } from './interceptors/http-error.intercep
     LoginCardComponent,
     SignupCardComponent,
     CinemasPageComponent,
+    CinemaImgComponent,
+    CinemasCreateComponent,
     CinemaElementComponent,
     ErrorMessageComponent,
     ConfirmEmailComponent,
