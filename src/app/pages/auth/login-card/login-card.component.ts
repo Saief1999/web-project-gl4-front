@@ -30,13 +30,12 @@ export class LoginCardComponent implements OnInit {
           this.router.navigate(['/account'])
         },
       (error) => {
-          this.errorMessage = error.error.message;
-          console.log(error);
+          this.errorMessage = error.split(': ')[2];
         }
     )
   }
 
-  setError() : void {
+  removeMessage() : void {
     this.errorMessage = ""
   }
 

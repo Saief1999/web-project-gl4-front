@@ -4,8 +4,17 @@ import { LoginResponseDto } from 'app/dto/auth/login-response-dto';
 import { LoginDto } from 'app/dto/auth/logindto';
 import { RegistrationDto } from 'app/dto/auth/registration-dto';
 import { RegistrationResponseDto } from 'app/dto/auth/registration-response-dto';
-import { LOGINLINK, REGISTRATIONLINK, EMAILCONFIRMATIONLINK, RESENDCONFIRMATIONLINK } from '../../constants';
+import { 
+    LOGINLINK, 
+    REGISTRATIONLINK, 
+    EMAILCONFIRMATIONLINK, 
+    RESENDCONFIRMATIONLINK,
+    ACCOUNTPROFILELINK 
+  } from '../../constants';
 import { Observable } from 'rxjs';
+import { User } from 'app/models/user.model';
+import { TokenPayloadDto } from 'app/dto/auth/token-payload.dto';
+import { VerifyEmailResponseDto } from 'app/dto/auth/verify-email-response.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +33,22 @@ export class AuthenticationService {
     return this.http.post<RegistrationResponseDto>(REGISTRATIONLINK, accountInformations);
   }
 
-  confirmEmail(token : String): Observable<string>{
-    return this.http.post<string>(`${EMAILCONFIRMATIONLINK}`,{'token': token});
+  confirmEmail(token : String): Observable<VerifyEmailResponseDto>{
+    return this.http.post<VerifyEmailResponseDto>(`${EMAILCONFIRMATIONLINK}`,{'token': token});
   }
 
   isAuthenticated(): boolean {
     return !! localStorage.getItem('token');
   }
 
-  resendConfirmation(): Observable<string>{
-    return this.http.get<string>(`${RESENDCONFIRMATIONLINK}`);
+  resendConfirmation(): Observable<any>{
+    return this.http.get<any>(`${RESENDCONFIRMATIONLINK}`);
+  }
+
+  getTokenPayload(): TokenPayloadDto{
+    if (this.isAuthenticated()){
+      const token: string = localStorage.getItem('token');
+      return JSON.parse(atob(token.split('.')[1])) as TokenPayloadDto;
+    }
   }
 }
