@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -23,12 +23,18 @@ import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.
 import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';
 import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { GeneralInformationSectionComponent } from './pages/account/general-information-section/general-information-section.component';
+import { EmailSectionComponent } from './pages/account/email-section/email-section.component';
+import { PasswordSectionComponent } from './pages/account/password-section/password-section.component';
 import { HttpErrorInterceptorProvider } from './interceptors/http-error.interceptor';
 import { MovieElementComponent } from './pages/movies/movie-element/movie-element.component';
 import { MoviesPageComponent } from './pages/movies/movies-page.component';
 import { MoviePageComponent } from './pages/movie/movie-page.component';
 
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
+import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
+import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +44,8 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
     LoginCardComponent,
     SignupCardComponent,
     CinemasPageComponent,
+    CinemaImgComponent,
+    CinemasCreateComponent,
     CinemaElementComponent,
     MoviesPageComponent,
     MovieElementComponent,
@@ -46,7 +54,10 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
     ConfirmEmailComponent,
     AccountPageComponent,
     TopSectionComponent,
-    MainSectionProfileComponent
+    MainSectionProfileComponent,
+    GeneralInformationSectionComponent,
+    EmailSectionComponent,
+    PasswordSectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +69,8 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
     AppRoutingModule,
     HttpClientModule,
     AngularMultiSelectModule,
+    ReactiveFormsModule, 
+    Ng2PageScrollModule
   ],
   providers: [AuthentificationInterceptorProvider, HttpErrorInterceptorProvider],
   bootstrap: [AppComponent]

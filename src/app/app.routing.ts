@@ -17,9 +17,12 @@ import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.
 import { AccountPageComponent } from './pages/account/account-page.component';
 import { MoviesPageComponent } from './pages/movies/movies-page.component';
 import { MoviePageComponent } from './pages/movie/movie-page.component';
+import { UserRoleGuard } from './guards/user-role.guard';
+import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
+// import { AuthenticatedGuad } from './guards/authenticated.guard';
+import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'confirm-email', component: ConfirmEmailComponent },
   { path: 'home', component: ComponentsComponent },
   { path: 'user-profile', component: ProfileComponent },
   { path: 'signup', component: SignupComponent },
@@ -28,15 +31,18 @@ const routes: Routes = [
   {
     path: 'register', component: RegistrationPageComponent,
     children: [
-      { path: '', redirectTo: "/register/login", pathMatch: 'full' },
-      { path: 'login', component: LoginCardComponent },
-      { path: 'signup', component: SignupCardComponent }
-    ]
+      { path: '', redirectTo: "/register/login", pathMatch: 'full', canActivate: [UnauthenticatedGuard] },
+      { path: 'login', component: LoginCardComponent, canActivate: [UnauthenticatedGuard] },
+      { path: 'signup', component: SignupCardComponent, canActivate: [UnauthenticatedGuard] }
+    ], 
+    canActivate: [UnauthenticatedGuard]
   },
-  { path: 'account', component: AccountPageComponent },
-  { path: 'cinemas', component: CinemasPageComponent },
   { path: 'movies', component: MoviesPageComponent },
   { path: 'movies/:id', component: MoviePageComponent},
+  { path: 'confirm-email', component: ConfirmEmailComponent, canActivate:[UserRoleGuard] },
+  { path: 'account', component: AccountPageComponent, canActivate: [UserRoleGuard] },
+  { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
+  { path: 'create', component: CinemasCreateComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
 ];

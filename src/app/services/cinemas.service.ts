@@ -7,8 +7,8 @@ import { BACKEND_URL } from "../../constants";
 })
 export class CinemasService {
     private cinemasUrl ;
-    constructor(private http:HttpClient) {
-        this.cinemasUrl = `${BACKEND_URL}/cinemas`; 
+    constructor(private http: HttpClient) {
+        this.cinemasUrl = `${BACKEND_URL}/cinemas`;
     }
 
     listCinemas() {

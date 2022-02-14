@@ -1,8 +1,14 @@
 <div class="row">
     <div class="col-md-6 col-sm-6 card no-transition p-4 mx-auto">
         <div class="px-2 signup-card">
-            <div *ngIf="errorMessage" class="alert alert-danger p-2">
-                {{ errorMessage }}
+            <div *ngIf="errorMessage !== ''" class="alert alert-danger my-2 text-center">
+                <div class="container">
+                    <i class="nc-bell-55 nc-icon"></i>
+                    {{ errorMessage }}
+                    <button type="button" class="close" (click)="removeMessage()">
+                        <i class="nc-icon nc-simple-remove"></i>
+                    </button>
+                </div>
             </div>
             <div class="card-title centered-text">
                 <h3>Sign up</h3>
@@ -57,7 +63,7 @@
                 <div class="my-1">
                     <label class="form-label" for="">Username</label>
                     <input class="form-control" #userNameInput="ngModel" ngModel type="text" required minlength="3"
-                        name="username" pattern="[A-Za-z0-9]+" placeholder="Your user name">
+                        name="username" pattern="[A-Za-z0-9-\.]+" placeholder="Your user name">
                     <app-error-message [text]="'Insert a valid user name'"
                         [condition]="userNameInput.invalid && userNameInput.touched"></app-error-message>
                 </div>
@@ -79,9 +85,13 @@
                         </app-error-message>
                     </div>
                 </div>
-                <button [disabled]="registrationForm.invalid" type="submit" class="btn btn-danger btn-block btn-round mt-3"
-                    (click)="register(registrationForm)">Sign
-                    un</button>
+                <div class="form-group mt-3">
+                    <input type="checkbox" class="checkbox-circle mr-2" [checked]="checked" (click)="setChecked()">
+                    <label>Are you sure you want to submit this data</label>
+                </div>
+                <button [disabled]="registrationForm.invalid || !checked" type="submit" class="btn btn-danger btn-block btn-round mt-3"
+                    (click)="register(registrationForm)">Signup
+                </button>
             </form>
             <div class="d-block centered-text">
                 <p>

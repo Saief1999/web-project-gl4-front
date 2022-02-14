@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ErrorMessageComponent implements OnInit {
 
-  @Input() private condition: boolean = false;
-  @Input() private text: string
+  @Input() condition: boolean = false;
+  @Input() text: string
   constructor() { }
 
   ngOnInit(): void {
