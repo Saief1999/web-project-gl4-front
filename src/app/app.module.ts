@@ -24,6 +24,9 @@ import { AccountPageComponent } from './pages/account/account-page.component';
 import { TopSectionComponent } from './pages/account/top-section/top-section.component';
 import { MainSectionProfileComponent } from './pages/account/main-section-profile/main-section-profile.component';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { GeneralInformationSectionComponent } from './pages/account/general-information-section/general-information-section.component';
+import { EmailSectionComponent } from './pages/account/email-section/email-section.component';
+import { PasswordSectionComponent } from './pages/account/password-section/password-section.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +42,9 @@ import { Ng2PageScrollModule } from 'ng2-page-scroll';
     AccountPageComponent,
     TopSectionComponent,
     MainSectionProfileComponent,
+    GeneralInformationSectionComponent,
+    EmailSectionComponent,
+    PasswordSectionComponent,
   ],
   imports: [
     BrowserModule,
