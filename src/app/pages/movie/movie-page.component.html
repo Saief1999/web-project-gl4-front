@@ -4,10 +4,26 @@
             <img class="img-rounded img-resp" [src]="movieImage() | defaultIfNone">
         </div>
         <div class="col-7">
-            <div>{{movie.title}}</div>
-            <div>{{movie.vote_average}}</div>
-            <div>{{movie.release_date}}</div>
-            <div>{{movie.overview}}</div>
+            <h1>{{movie.title}}</h1>
+            <h4 class="sub-title mt-n1 pt-2">
+                <div>
+                {{movie.release_date.split("-")[0]}}
+                </div>
+                <div>
+                <span *ngFor="let genre of movie.genres; let last=last">
+                    {{genre.name}}
+                    <span *ngIf="!last"> / </span>
+                </span>
+            </div>
+            </h4>
+            <div class="mt-2 rating d-flex align-items-center">
+                <img class="rating-img mr-2" src="assets/img/movies/imdb.svg">
+                <span class="rating-value">{{movie.vote_average}} / 10</span>
+                 </div>
+            <div class="mt-2">
+                <div class="plot-title">Plot</div>
+                <div class="plot-content">{{movie.overview}}</div>
+            </div>
         </div>
     </div>
 

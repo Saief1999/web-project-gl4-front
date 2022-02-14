@@ -1,3 +1,21 @@
 .img-resp {
     max-height:400px;
 }
+
+.plot-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.plot-content {
+    font-size: 15px
+}
+.rating-img {
+    max-width: 35px;
+    border-radius: 3px;
+}
+
+.rating-value {
+    font-size: 18px;
+    font-weight:400;
+}

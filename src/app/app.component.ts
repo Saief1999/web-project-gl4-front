@@ -7,7 +7,7 @@ import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { genres } from './utilities/store';
 import { GenresService } from './services/genres.service';
-import { Genre } from './dto/genres/genre';
+import { DbGenre } from './dto/genres/genre';
 
 @Component({
     selector: 'app-root',
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
     }
 
     listGenres() {
-        this.genresService.listGenres().subscribe((genresResult:Genre[]) => {
+        this.genresService.listGenres().subscribe((genresResult:DbGenre[]) => {
             genres.next(genresResult);
         })
     }
