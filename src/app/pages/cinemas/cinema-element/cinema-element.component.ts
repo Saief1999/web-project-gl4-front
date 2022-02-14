@@ -1,7 +1,7 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CinemaListItem } from 'app/dto/cinemas/CinemaListItem';
+import { CinemaListItem } from 'app/dto/cinemas/cinema-list-item';
 
 @Component({
   selector: 'app-cinema-element',

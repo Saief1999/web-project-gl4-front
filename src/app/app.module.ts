@@ -28,6 +28,11 @@ import { GeneralInformationSectionComponent } from './pages/account/general-info
 import { EmailSectionComponent } from './pages/account/email-section/email-section.component';
 import { PasswordSectionComponent } from './pages/account/password-section/password-section.component';
 import { HttpErrorInterceptorProvider } from './interceptors/http-error.interceptor';
+import { MovieElementComponent } from './pages/movies/movie-element/movie-element.component';
+import { MoviesPageComponent } from './pages/movies/movies-page.component';
+import { MoviePageComponent } from './pages/movie/movie-page.component';
+
+import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.component';
 @NgModule({
@@ -42,6 +47,9 @@ import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.componen
     CinemaImgComponent,
     CinemasCreateComponent,
     CinemaElementComponent,
+    MoviesPageComponent,
+    MovieElementComponent,
+    MoviePageComponent,
     ErrorMessageComponent,
     ConfirmEmailComponent,
     AccountPageComponent,
@@ -60,6 +68,7 @@ import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.componen
     ExamplesModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularMultiSelectModule,
     ReactiveFormsModule, 
     Ng2PageScrollModule
   ],

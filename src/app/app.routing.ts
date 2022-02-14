@@ -15,6 +15,8 @@ import { CinemasPageComponent } from './pages/cinemas/cinemas-page.component';
 import { NotFoundPageComponent } from './not-found/not-found-page.component';
 import { ConfirmEmailComponent } from './pages/auth/confirm-email/confirm-email.component';
 import { AccountPageComponent } from './pages/account/account-page.component';
+import { MoviesPageComponent } from './pages/movies/movies-page.component';
+import { MoviePageComponent } from './pages/movie/movie-page.component';
 import { UserRoleGuard } from './guards/user-role.guard';
 import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 // import { AuthenticatedGuad } from './guards/authenticated.guard';
@@ -35,6 +37,8 @@ const routes: Routes = [
     ], 
     canActivate: [UnauthenticatedGuard]
   },
+  { path: 'movies', component: MoviesPageComponent },
+  { path: 'movies/:id', component: MoviePageComponent},
   { path: 'confirm-email', component: ConfirmEmailComponent, canActivate:[UserRoleGuard] },
   { path: 'account', component: AccountPageComponent, canActivate: [UserRoleGuard] },
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
