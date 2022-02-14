@@ -2,8 +2,13 @@
     <div class="filter"></div>
 </div>
 <div class="special-row">
-    <img class="profile-picture" src="/assets/img/profile-avatar.png" alt="Profile Picture">
-    <button class="btn btn-outline-default btn-file btn-round">Select image</button>
+    <img class="profile-picture" [src]="imagePath" alt="Profile Picture">
+    <form [formGroup]="imageUploadForm" (change)="submitProfileImage($event)">
+        <input type="file" class="d-none" id="profile-image" accept="image/*">
+        <label for="profile-image" class="btn btn-outline-default btn-file btn-round">Select image</label>
+    </form>
     <h3 class="username">{{ user.username }}</h3>
-    <blockquote class="blockquote">{{ user.quote }}</blockquote>
+    <div *ngIf='user.quote'>
+        <blockquote class="blockquote">{{ user.quote }}</blockquote>
+    </div>
 </div>

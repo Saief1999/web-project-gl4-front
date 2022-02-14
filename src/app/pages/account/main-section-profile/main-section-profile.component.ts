@@ -6,6 +6,7 @@ import { AccountService } from 'app/services/account.service';
 import { EventEmitter } from '@angular/core';
 import { PasswordUpdateRequestDto } from 'app/dto/account/password-update-request.dto';
 import { VerificationCodeRequestDto } from 'app/dto/account/verification-code-request.dto';
+import { EmailChangeRequestDto } from 'app/dto/account/email-change-request.dto';
 
 @Component({
   selector: 'app-main-section-profile',
@@ -54,6 +55,19 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
       Validators.max(99999)
     ])
   })
+  newEmailForm = new FormGroup({
+    'newEmail': new FormControl('', [
+      Validators.required,
+      Validators.email
+    ])
+  })
+  emailVerificationCodeForm = new FormGroup({
+    'verificationCode': new FormControl('', [
+      Validators.required,
+      Validators.min(10000),
+      Validators.max(99999)
+    ])
+  })
 
   passwordsMatching: boolean = true;
 
@@ -61,11 +75,19 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
 
   passwordInformationConfirmationStatus: boolean = false;
 
+  emailInformationConfirmationStatus: boolean = false;
+
   generalInformationDisabled: boolean = true;
 
   passwordInformationDisabled: boolean = true;
 
+  emailInformationDisabled: boolean = true;
+
   passwordConfirmationCodeVisibility: boolean = false;
+
+  emailFormVisibility: boolean = false;
+
+  emailConfirmationCodeVisibility: boolean = false;
 
   genders: GenderEnum[] = [GenderEnum.male, GenderEnum.female, GenderEnum.undeclared]
 
@@ -87,6 +109,11 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
     this.passwordsMatching = this.passwordForm.get('newPassword').value === this.passwordForm.get('confirmPassword').value
     this.generalInformationDisabled = !(this.generalInformationconfirmationStatus && this.generalInformationForm.valid && this.generalInformationForm.dirty)
     this.passwordInformationDisabled = !(this.passwordForm.valid && this.passwordForm.touched && this.passwordsMatching && this.passwordInformationConfirmationStatus)
+    this.emailInformationDisabled = !(this.newEmailForm.valid && this.newEmailForm.touched && this.emailInformationConfirmationStatus)
+  }
+
+  setEmailFormVisibility(){
+    this.emailFormVisibility = !this.emailFormVisibility;
   }
 
   getUsernameInput(){
@@ -117,6 +144,10 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
   
   clickPasswordConfirmation(){
     this.passwordInformationConfirmationStatus = !this.passwordInformationConfirmationStatus;
+  }
+
+  clickEmailConfirmation(){
+    this.emailInformationConfirmationStatus = !this.emailInformationConfirmationStatus
   }
   
   submitGeneralChanges(){
@@ -149,7 +180,7 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
   submitVerification(){
     const payload : VerificationCodeRequestDto = this.verificationCodeForm.value as VerificationCodeRequestDto;
     this.accountService.confirmUpdatingPassword(payload).subscribe({
-      next : data => {
+      next: data => {
         this.passwordForm.reset();
         this.verificationCodeForm.reset();
         this.passwordConfirmationCodeVisibility = false;
@@ -157,6 +188,33 @@ export class MainSectionProfileComponent implements OnChanges, DoCheck {
       }, 
       error: err => {
         console.error(err);
+      }
+    })
+  }
+
+  submitNewEmail(){
+    const payload: EmailChangeRequestDto = this.newEmailForm.value as EmailChangeRequestDto;
+    this.accountService.updateEmail(payload).subscribe({
+      next: data => {
+        this.emailConfirmationCodeVisibility = true;
+      }
+    })
+  }
+
+  submitEmailVerification(){
+    const payload: VerificationCodeRequestDto = this.emailVerificationCodeForm.value as VerificationCodeRequestDto;
+    this.accountService.confirmUpdatingEmail(payload).subscribe({
+      next: data => {
+        const { token , user } = data;
+        localStorage.setItem('token', token)
+        this.submitGeneralInfoEvent.emit(user)
+        this.emailVerificationCodeForm.reset()
+        this.emailVerificationCodeForm.markAsUntouched();
+        this.newEmailForm.reset();
+        this.newEmailForm.markAsPristine();
+        this.emailFormVisibility = false;
+        this.emailConfirmationCodeVisibility = false;
+        this.emailInformationConfirmationStatus = false;
       }
     })
   }

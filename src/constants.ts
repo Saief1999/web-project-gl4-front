@@ -5,3 +5,6 @@ export const RESENDCONFIRMATIONLINK = 'http://localhost:3000/resend-confirmation
 export const ACCOUNTPROFILELINK = 'http://localhost:3000/accounts/me'
 export const PASSWORDUPDATELINK = 'http://localhost:3000/accounts/me/password'
 export const PASSWORDVERIFICATIONLINK = 'http://localhost:3000/accounts/me/password/confirm'
+export const EMAILUPDATELINK = 'http://localhost:3000/accounts/me/email'
+export const EMAILVERIFICATIONLINK = 'http://localhost:3000/accounts/me/email/confirm'
+export const PROFILEIMAGEUPDATELINK = 'http://localhost:3000/accounts/me/image'
