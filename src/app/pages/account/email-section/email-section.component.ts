@@ -1,16 +1,18 @@
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmailChangeRequestDto } from 'app/dto/account/email-change-request.dto';
 import { VerificationCodeRequestDto } from 'app/dto/account/verification-code-request.dto';
+import { TokenPayloadDto } from 'app/dto/auth/token-payload.dto';
 import { User } from 'app/models/user.model';
 import { AccountService } from 'app/services/account.service';
+import { AuthenticationService } from 'app/services/authentication.service';
 
 @Component({
   selector: 'app-email-section',
   templateUrl: './email-section.component.html',
   styleUrls: ['./email-section.component.css']
 })
-export class EmailSectionComponent implements OnInit, DoCheck {
+export class EmailSectionComponent implements OnInit, DoCheck, OnChanges {
 
   newEmailForm = new FormGroup({
     'newEmail': new FormControl('', [
@@ -26,6 +28,7 @@ export class EmailSectionComponent implements OnInit, DoCheck {
     ])
   })
   emailFormVisibility: boolean = false;
+  accountActivated: boolean = false;
   emailConfirmationCodeVisibility: boolean = false;
   emailInformationConfirmationStatus: boolean = false;
   emailInformationDisabled: boolean = true;
@@ -33,7 +36,10 @@ export class EmailSectionComponent implements OnInit, DoCheck {
   successMessage: string = '';
   @Input() user: User = new User();
   @Output() emailChangeEvent: EventEmitter<User> = new EventEmitter()
-  constructor(private readonly accountService: AccountService) { }
+  constructor(
+    private readonly accountService: AccountService,
+    private readonly authService: AuthenticationService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +47,12 @@ export class EmailSectionComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     this.emailInformationDisabled = !(this.newEmailForm.valid && this.newEmailForm.touched && this.emailInformationConfirmationStatus)
   }
+
+  ngOnChanges(): void {
+    const tokenPayload : TokenPayloadDto = this.authService.getTokenPayload();
+    this.accountActivated = tokenPayload.activated;
+  }
+
   removeMessage(){
     this.errorMessage = ''
     this.successMessage = ''
@@ -80,6 +92,17 @@ export class EmailSectionComponent implements OnInit, DoCheck {
         this.emailInformationConfirmationStatus = false;
         this.successMessage = "Email changed Successfully"
       }, 
+      error: err => {
+        this.errorMessage = err.split(': ')[2];
+      } 
+    })
+  }
+
+  resendEmailVerification(){
+    this.authService.resendConfirmation().subscribe({
+      next: data => {
+        this.successMessage = data.message;
+      },
       error: err => {
         this.errorMessage = err.split(': ')[2];
       } 

@@ -25,6 +25,11 @@ Your current email is
         </tr>
     </thead>
 </table>
+<div *ngIf="!accountActivated">
+    <div class="alert alert-warning">
+        Your account is not activatetd. <button class="btn btn-sm btn-warning" (click)="resendEmailVerification()">Click here</button> to receive an activation email
+    </div>
+</div>
 <button class="btn btn-primary btn-round" (click)="setEmailFormVisibility()">Click here</button> If you want to change
 it
 <div *ngIf="emailFormVisibility">

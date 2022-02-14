@@ -16,6 +16,7 @@ export class GeneralInformationSectionComponent implements OnInit, DoCheck, OnCh
     'username': new FormControl('', [
       Validators.required,
       Validators.minLength(5),
+      Validators.pattern('[A-Za-z0-9-\.]+')
     ]),
     'firstname': new FormControl('', [
       Validators.required,

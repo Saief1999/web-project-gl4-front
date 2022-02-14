@@ -17,16 +17,14 @@ export class ConfirmEmailComponent implements OnInit {
     ngOnInit(): void {
       this.activatedRoute.queryParams.subscribe({
         next: (params) => {
-          console.log(params)
           const token: string = params['token']
           this.authService.confirmEmail(token).subscribe({
-            next : message => {
-              console.log(message);
+            next : data => {
+              const { token } = data;
+              localStorage.setItem('token', token);
               this.router.navigate(['/account']);
             }, 
-            error: err => {
-              console.error(err);
-            }
+            error: err => {}
           })
         },
         error: err => {
@@ -38,7 +36,7 @@ export class ConfirmEmailComponent implements OnInit {
 
     resendConfirmation(){
       this.authService.resendConfirmation().subscribe({
-        'next': data => {console.log(data)},
+        'next': data => {},
         'error': error => console.error(error)
       })
     }

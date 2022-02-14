@@ -14,6 +14,7 @@ export class SignupCardComponent implements OnInit {
 
   private registrationDto: RegistrationDto = null;
   errorMessage: String = "";
+  checked: boolean = false;
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
@@ -21,6 +22,14 @@ export class SignupCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  removeMessage(){
+    this.errorMessage = '';
+  }
+
+  setChecked(){
+    this.checked = ! this.checked
   }
 
   register(registrationForm: NgForm): void {
@@ -33,7 +42,7 @@ export class SignupCardComponent implements OnInit {
           this.router.navigate(["account"]);
         },
         "error": (error) => {
-          this.errorMessage = error.message;
+          this.errorMessage = error.split(': ')[2];
         },
       }
     )

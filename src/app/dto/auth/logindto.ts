@@ -1,5 +1,5 @@
 export class LoginDto {
-    email: string;
+    login: string;
     password: string;
     // constructor(email: string, password: string) {
     //     this.email = email;
