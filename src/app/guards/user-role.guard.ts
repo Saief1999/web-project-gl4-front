@@ -16,13 +16,13 @@ export class UserRoleGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.authService.isAuthenticated){
-      this.router.navigate(['register']);
+    if (!this.authService.isAuthenticated()){
+      this.router.navigate(['/home']);
       return false;
     }
     const tokenPayload: TokenPayloadDto = this.authService.getTokenPayload();
     if(!(tokenPayload.role === 'user')) {
-      this.router.navigate(['register']);
+      this.router.navigate(['/home']);
       return false;
     }
     return true;

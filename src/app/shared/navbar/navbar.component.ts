@@ -1,22 +1,41 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, OnChanges, DoCheck } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AuthenticationService } from 'app/services/authentication.service';
+import { TokenPayloadDto } from 'app/dto/auth/token-payload.dto';
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, DoCheck{
     private toggleButton: any;
     private sidebarVisible: boolean;
+    isAuthenticated: boolean = false;
+    role: string = ""
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(
+        public location: Location, 
+        private element : ElementRef,
+        private readonly authService: AuthenticationService
+        ) {
         this.sidebarVisible = false;
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+    }
+
+    ngDoCheck(){
+        this.isAuthenticated = this.authService.isAuthenticated();
+        console.log(this.isAuthenticated)
+        if (this.isAuthenticated) {
+            const tokenPayload: TokenPayloadDto = this.authService.getTokenPayload()
+            this.role = tokenPayload.role;
+        } else {
+            this.role = ""
+        }
     }
     isNavbarTransparent() {
         const pageUrl = this.location.prepareExternalUrl(this.location.path());

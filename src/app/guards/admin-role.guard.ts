@@ -15,7 +15,7 @@ export class AdminRoleGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.authService.isAuthenticated) {
+    if (!this.authService.isAuthenticated()) {
       this.router.navigate(['register']);
       return false;
     }

@@ -16,7 +16,7 @@
             </button>
         </div>
         <div class="navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto align-items-center">
                 <!-- <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
                         <i class="fa fa-twitter"></i>
@@ -49,26 +49,32 @@
                     <a [routerLink]="['/home']" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
                 </li> -->
 
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated">
                     <a   [routerLink]="['/cinemas']" class="nav-link">
-                        <!-- <i class="nc-icon nc-layout-11"></i> -->
+                        <i class="nc-icon"></i>
                         Cinemas</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated">
                     <a   href="#" class="nav-link">
                         <!-- <i class="nc-icon nc-layout-11"></i> -->
                         Plannings</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!isAuthenticated">
                     <a [routerLink]="['/register/login']"  class="nav-link">
-                        <!-- <i class="nc-icon nc-layout-11"></i> -->
+                        <i class="nc-icon"></i>
                         Login</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!isAuthenticated">
                     <a [routerLink]="['/register/signup']"  class="nav-link">
-                        <!-- <i class="nc-icon nc-layout-11"></i> -->
+                        <i class="nc-icon"></i>
                         Register</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated && role==='user'">
+                    <a [routerLink]="['/account']" class="nav-link">
+                        <i class="nc-icon nc-circle-10"></i>
+                        Account
+                    </a>
                 </li>
 
             </ul>
