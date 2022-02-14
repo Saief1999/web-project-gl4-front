@@ -18,6 +18,7 @@ import { AccountPageComponent } from './pages/account/account-page.component';
 import { UserRoleGuard } from './guards/user-role.guard';
 import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 // import { AuthenticatedGuad } from './guards/authenticated.guard';
+import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: ComponentsComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'confirm-email', component: ConfirmEmailComponent, canActivate:[UserRoleGuard] },
   { path: 'account', component: AccountPageComponent, canActivate: [UserRoleGuard] },
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
+  { path: 'create', component: CinemasCreateComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
 ];

@@ -28,6 +28,8 @@ import { GeneralInformationSectionComponent } from './pages/account/general-info
 import { EmailSectionComponent } from './pages/account/email-section/email-section.component';
 import { PasswordSectionComponent } from './pages/account/password-section/password-section.component';
 import { HttpErrorInterceptorProvider } from './interceptors/http-error.interceptor';
+import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
+import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,8 @@ import { HttpErrorInterceptorProvider } from './interceptors/http-error.intercep
     LoginCardComponent,
     SignupCardComponent,
     CinemasPageComponent,
+    CinemaImgComponent,
+    CinemasCreateComponent,
     CinemaElementComponent,
     ErrorMessageComponent,
     ConfirmEmailComponent,
