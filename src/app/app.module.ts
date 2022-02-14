@@ -36,7 +36,23 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.component';
 import { defaultImagePipe } from './pipes/default-image.pipe';
-import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction'; 
+import timeGridPlugin from '@fullcalendar/timegrid';
+import BootstrapThemePlugin  from '@fullcalendar/bootstrap';
+import { CalendarComponent } from './pages/cinemas/calendar/calendar.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+  timeGridPlugin,
+  BootstrapThemePlugin
+]);
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +77,7 @@ import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scro
     EmailSectionComponent,
     PasswordSectionComponent,
     defaultImagePipe,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +91,8 @@ import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scro
     AngularMultiSelectModule,
     ReactiveFormsModule, 
     Ng2PageScrollModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    FullCalendarModule
   ],
   providers: [AuthentificationInterceptorProvider, HttpErrorInterceptorProvider],
   bootstrap: [AppComponent]
