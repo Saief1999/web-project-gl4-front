@@ -1,10 +1,11 @@
-export const LOGINLINK = 'http://localhost:3000/login';
-export const REGISTRATIONLINK = 'http://localhost:3000/signup'
-export const EMAILCONFIRMATIONLINK = 'http://localhost:3000/confirm'
-export const RESENDCONFIRMATIONLINK = 'http://localhost:3000/resend-confirmation-link'
 export const ACCOUNTPROFILELINK = 'http://localhost:3000/accounts/me'
 export const PASSWORDUPDATELINK = 'http://localhost:3000/accounts/me/password'
 export const PASSWORDVERIFICATIONLINK = 'http://localhost:3000/accounts/me/password/confirm'
 export const EMAILUPDATELINK = 'http://localhost:3000/accounts/me/email'
 export const EMAILVERIFICATIONLINK = 'http://localhost:3000/accounts/me/email/confirm'
 export const PROFILEIMAGEUPDATELINK = 'http://localhost:3000/accounts/me/image'
+export const BACKEND_URL = "http://localhost:3000";
+export const LOGINLINK = `${BACKEND_URL}/login`;
+export const REGISTRATIONLINK = `${BACKEND_URL}/signup`;
+export const EMAILCONFIRMATIONLINK = `${BACKEND_URL}/confirm`;
+export const RESENDCONFIRMATIONLINK = `${BACKEND_URL}/resend-confirmation-link`;

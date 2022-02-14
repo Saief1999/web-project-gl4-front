@@ -27,6 +27,7 @@ import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { GeneralInformationSectionComponent } from './pages/account/general-information-section/general-information-section.component';
 import { EmailSectionComponent } from './pages/account/email-section/email-section.component';
 import { PasswordSectionComponent } from './pages/account/password-section/password-section.component';
+import { HttpErrorInterceptorProvider } from './interceptors/http-error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,7 @@ import { PasswordSectionComponent } from './pages/account/password-section/passw
     ReactiveFormsModule, 
     Ng2PageScrollModule
   ],
-  providers: [AuthentificationInterceptorProvider],
+  providers: [AuthentificationInterceptorProvider, HttpErrorInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
