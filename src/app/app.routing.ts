@@ -21,6 +21,8 @@ import { UserRoleGuard } from './guards/user-role.guard';
 import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 // import { AuthenticatedGuad } from './guards/authenticated.guard';
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
+import {SingleCinemaComponent} from './pages/cinemas/single-cinema/single-cinema.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: ComponentsComponent },
