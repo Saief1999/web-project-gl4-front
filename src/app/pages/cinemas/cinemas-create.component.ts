@@ -1,8 +1,9 @@
 
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { CinemaListItem } from 'app/dto/cinemas/cinema-list-item';
 import { CinemasService } from 'app/services/cinemas.service';
+import {Cinema} from '../../dto/cinemas/cinema';
 
 @Component({
   selector: 'app-cinemas-create',
@@ -12,14 +13,50 @@ import { CinemasService } from 'app/services/cinemas.service';
 export class CinemasCreateComponent implements OnInit {
 
   imgURL: string;
+  @Input()
+  cinema: Cinema;
+  @Input()
+  termsNotAgree: boolean;
+  imgFile: File;
   constructor(
     private router: Router,
     private cinemaService: CinemasService
   ) {
+    this.cinema = new Cinema();
+    this.cinema.description='';
     this.imgURL = 'assets/img/cinema.jpg'
   }
 
-  ngOnInit(): void {
+  reset(): void
+  {
+    this.cinema=new Cinema();
+    this.cinema.description='';
+    this.imgURL= 'assets/img/cinema.jpg'
+    this.termsNotAgree=false;
+    this.imgFile=null;
   }
+
+  ngOnInit(): void {
+
+  }
+
+  onPublish(): void
+  {
+    this.cinemaService.createCinema(this.cinema);
+  }
+
+  onFileInput(event):void
+  {
+      if (event.target.files[0]) {
+        this.imgFile=event.target.files[0];
+        console.log(this.imgFile.size);
+        const imgURLObserver = this.cinemaService.uploadFile(event.target.files[0]);
+        imgURLObserver.subscribe(response=> {
+          this.cinema.image = response.imageUrl;
+          this.imgURL=response.imageUrl;
+        });
+      }
+  }
+
 
 }
