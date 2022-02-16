@@ -30,7 +30,6 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'landing', component: LandingComponent },
   { path: 'nucleoicons', component: NucleoiconsComponent },
-  { path: 'cinema/:id', component: SingleCinemaComponent },
   {
     path: 'register', component: RegistrationPageComponent,
     children: [
@@ -47,6 +46,7 @@ const routes: Routes = [
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
   { path: 'cinemas/create', component: CinemasCreateComponent },
   { path: 'cinemas/update', component: CinemasCreateComponent },
+  { path: 'cinemas/:id', component:SingleCinemaComponent},
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
 ];

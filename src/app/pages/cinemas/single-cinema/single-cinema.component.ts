@@ -18,18 +18,20 @@ export class SingleCinemaComponent implements OnInit {
 
   ) { }
 
-  @Input() cinema:Cinema;
+  @Input() cinema:Cinema = new Cinema();
+  id = "";
   
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      const id:number = params["id"];
+      const id:string = params["id"];
+      this.id = id ; 
       this.getCinema(id)
       
   })
 
   }
 
-  getCinema(id:number) {
+  getCinema(id:string) {
     this.CinemasService.getCinema(id).subscribe((cinema:Cinema) => {
         this.cinema= cinema;
     }) 

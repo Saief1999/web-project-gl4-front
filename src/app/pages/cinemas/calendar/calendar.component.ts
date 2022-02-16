@@ -3,8 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { MoviePlanning } from 'app/dto/planning/movie-planning';
+import { MoviePlanningByCinema } from 'app/dto/planning/movie-planning-by-cinema';
 import { MoviePlanningByMovie } from 'app/dto/planning/movie-planning-by-movie';
 import { PlanningsService } from 'app/services/planning.service';
+import { TMDB_IMG_URI } from '../../../../constants';
 
 @Component({
   selector: 'app-calendar',
@@ -19,7 +21,7 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   @Input("byCinema") byCinema:boolean = true;
-  @Input("id") id;
+  @Input("id") id:any = "";
 
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridWeek',
@@ -40,8 +42,11 @@ export class CalendarComponent implements OnInit {
     const { el, event } = mouseEnterInfo;
     if (!el.style.backgroundSize)
       el.style.backgroundSize =  "cover";
-    el.style.backgroundImage =`url('${event.extendedProps.background}')`;
-  }
+      if (!this.byCinema)
+        el.style.backgroundImage =`url('${event.extendedProps.background}')`;
+      else
+        el.style.backgroundImage = `url('${TMDB_IMG_URI}/${event.extendedProps.background}')`
+    }
 
   handleEventLeave(mouseEnterLeave) {
     const { el } = mouseEnterLeave;
@@ -50,20 +55,20 @@ export class CalendarComponent implements OnInit {
   }
   handleEventClick(info) {
     const event = info.event ; 
-    if (!event.byCinema) { // filter by movie -> go to cinema page
+    if (!event.extendedProps.byCinema) { // filter by movie -> go to cinema page
       this.router.navigate(['/cinemas',event.extendedProps.cinemaId]);
     }
     else {
-      this.router.navigate(['/movies'], event.extendedProps.movieId);
+      this.router.navigate(['/movies', event.extendedProps.movieId]);
     } 
   }
 
   eventHandler(fetchInfo, successCallback, failureCallback) {
     if (!this.byCinema) {
-      this.fetchPlanningsByMovie(fetchInfo.start, fetchInfo.end, successCallback, failureCallback)
+      this.fetchPlanningsByMovie(fetchInfo.start, fetchInfo.end, successCallback, failureCallback);
     }
     else {
-      console.log("By Cinema");
+      this.fetchPlanningsByCinema(fetchInfo.start, fetchInfo.end, successCallback, failureCallback);
     }
   }
 
@@ -89,8 +94,19 @@ export class CalendarComponent implements OnInit {
 
   fetchPlanningsByCinema(start:Date, end:Date, successCallback, failureCallback) {
     this.planningsService.listPlanningsByCinema(start, end, this.id)
-    .subscribe((moviePlannings:MoviePlanning[]) => {
-      successCallback(moviePlannings)
+    .subscribe((moviePlannings:MoviePlanningByCinema[]) => {
+
+      const plannings = moviePlannings.map((moviePlanning:MoviePlanningByCinema) => {
+        const {movie, ...attrs} = moviePlanning;
+        return {
+          ...attrs,
+          title: movie.title,
+          movieId: movie.id,
+          byCinema: true,
+          background: movie.poster_path
+        }
+      })
+      successCallback(plannings)
       }, () => failureCallback()
     )
   }

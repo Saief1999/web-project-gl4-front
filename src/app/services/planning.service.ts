@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MoviePlanning } from "app/dto/planning/movie-planning";
+import { MoviePlanningByCinema } from "app/dto/planning/movie-planning-by-cinema";
 import { MoviePlanningByMovie } from "app/dto/planning/movie-planning-by-movie";
 import { Observable } from "rxjs";
 import { BACKEND_URL } from "../../constants";
@@ -23,8 +24,8 @@ import { BACKEND_URL } from "../../constants";
         });
     }
 
-    listPlanningsByCinema(start:Date, end:Date, id:string):Observable<MoviePlanning[]> {
-        return this.http.get<MoviePlanning[]>(`${this.planningsUri}/bycinema`, {
+    listPlanningsByCinema(start:Date, end:Date, id:string):Observable<MoviePlanningByCinema[]> {
+        return this.http.get<MoviePlanningByCinema[]>(`${this.planningsUri}/bycinema`, {
             params: {
                 start: start.toISOString(),
                 end: end.toISOString(),

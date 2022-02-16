@@ -1,5 +1,5 @@
 export class CinemaListItem {
-    id: string;
+    _id: string;
     name: string;
     description: string;
     isOpen: boolean;

@@ -33,7 +33,7 @@ export class CinemasService {
         return this.http.put<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
     }
 
-    getCinema(id: number) {
+    getCinema(id: string) {
         return this.http.get(`${this.cinemasUrl}/${id}`)
     }
 }
