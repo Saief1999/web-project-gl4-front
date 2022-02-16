@@ -33,7 +33,12 @@ export class CinemasPageComponent implements OnInit {
   }
 
   createCinema() {
-    console.log("Hi")
     this.router.navigate(["cinemas","create"]);
+  }
+
+  removeCinema(id:string) {
+    this.cinemaService.removeCinema(id).subscribe(() => {
+      this.cinemas.splice(this.cinemas.findIndex(cinema => cinema._id === id),1)
+    })
   }
 }

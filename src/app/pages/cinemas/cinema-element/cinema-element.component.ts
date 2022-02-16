@@ -1,8 +1,9 @@
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CinemaListItem } from 'app/dto/cinemas/cinema-list-item';
 import { AuthenticationService } from 'app/services/authentication.service';
+import { CinemasService } from 'app/services/cinemas.service';
 
 @Component({
   selector: 'app-cinema-element',
@@ -17,7 +18,7 @@ export class CinemaElementComponent implements OnInit {
   ) { }
 
   @Input() cinema:CinemaListItem;
-  
+  @Output() removeEvent:EventEmitter<string> = new EventEmitter()
   ngOnInit(): void {
   }
   isAdmin() {
@@ -28,7 +29,7 @@ export class CinemaElementComponent implements OnInit {
     this.router.navigate(["cinemas","update",id]);
   }
 
-  removeCinema(id) {
+  removeCinema(id: string) {
+    this.removeEvent.emit(id);
   }
- 
 }
