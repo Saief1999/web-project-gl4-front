@@ -21,4 +21,11 @@ export class User{
     gender?: GenderEnum= GenderEnum.undeclared;
     quote?: string = '';
     birthday?: string = ''
+
+    constructor(id = "", firstname = "", lastname = "", email = "", quote = ""){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.quote = quote;
+    }
 }

@@ -44,8 +44,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import BootstrapThemePlugin  from '@fullcalendar/bootstrap';
 import { CalendarComponent } from './pages/cinemas/calendar/calendar.component';
+import { LandingComponent } from './pages/landing/landing.component';
+import {CinemasUpdateComponent} from './pages/cinemas/cinemas-update.component';
 import {SingleCinemaComponent} from './pages/cinemas/single-cinema/single-cinema.component';
-
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -80,7 +81,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PasswordSectionComponent,
     defaultImagePipe,
     CalendarComponent,
-    SingleCinemaComponent
+    LandingComponent
   ],
   imports: [
     BrowserModule,

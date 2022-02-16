@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MovieDetails } from "app/dto/movies/movie-details";
 import { MoviesService } from "app/services/movies.service";
+import { PlanningsService } from "app/services/planning.service";
 import { genres } from "app/utilities/store";
 import { TMDB_IMG_URI } from "../../../constants";
 
@@ -14,9 +15,11 @@ export class MoviePageComponent implements OnInit{
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private moviesService:MoviesService
+        private moviesService:MoviesService,
+        private planningsService: PlanningsService,
       ) { }
     
+    id: number=0;
     movie: MovieDetails;
     movieImage():string {
         if (!this.movie?.poster_path)
@@ -29,6 +32,7 @@ export class MoviePageComponent implements OnInit{
         this.movie = new MovieDetails();
         this.activatedRoute.params.subscribe(params => {
             const id:number = params["id"];
+            this.id = id ;
             this.moviesService.getMovie(id).subscribe((movie:MovieDetails) => {
                 this.movie = movie;
             })
