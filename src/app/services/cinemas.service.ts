@@ -2,15 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BACKEND_URL } from '../../constants';
 import {Observable} from 'rxjs';
-import {MovieImageUrl} from '../dto/movies/image-url';
+import {CinemaImage} from '../dto/cinemas/cinema-image';
 import {Cinema} from '../dto/cinemas/cinema';
+import {Router} from '@angular/router';
+import {CinemasPageComponent} from '../pages/cinemas/cinemas-page.component';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CinemasService {
     private cinemasUrl ;
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
         this.cinemasUrl = `${BACKEND_URL}/cinemas`;
     }
 
@@ -18,17 +20,17 @@ export class CinemasService {
         return this.http.get(this.cinemasUrl);
     }
 
-    uploadFile(file: File): Observable<MovieImageUrl> {
+    uploadFile(file: File): Observable<CinemaImage> {
         const formData = new FormData();
-        formData.set('image', file, file.name);
-        console.log(file.name);
-        return this.http.post<MovieImageUrl>(this.cinemasUrl + '/upload', formData);
+        formData.set('image', file);
+        return this.http.post<CinemaImage>(this.cinemasUrl + '/upload', formData);
     }
 
-    createCinema(cinema: Cinema): void {
-        const formData = new FormData();
-        for (const k in cinema)
-            formData.set(k, cinema[k]);
-        this.http.post(this.cinemasUrl, formData);
+    createCinema(cinema: Cinema) {
+        return this.http.post<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
+    }
+
+    updateCinema(cinema: Cinema) {
+        return this.http.put<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
     }
 }

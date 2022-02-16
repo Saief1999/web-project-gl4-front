@@ -42,7 +42,8 @@ const routes: Routes = [
   { path: 'confirm-email', component: ConfirmEmailComponent, canActivate:[UserRoleGuard] },
   { path: 'account', component: AccountPageComponent, canActivate: [UserRoleGuard] },
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
-  { path: 'create', component: CinemasCreateComponent },
+  { path: 'cinemas/create', component: CinemasCreateComponent },
+  { path: 'cinemas/update', component: CinemasCreateComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
 ];
