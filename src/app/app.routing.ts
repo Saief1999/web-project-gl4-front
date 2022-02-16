@@ -20,9 +20,8 @@ import { MoviePageComponent } from './pages/movie/movie-page.component';
 import { UserRoleGuard } from './guards/user-role.guard';
 import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 // import { AuthenticatedGuad } from './guards/authenticated.guard';
-import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
+import {CinemasCreateComponent} from './pages/cinemas/cinema-create/cinemas-create.component';
 import {SingleCinemaComponent} from './pages/cinemas/single-cinema/single-cinema.component';
-import {CinemasUpdateComponent} from './pages/cinemas/cinemas-update.component';
 import { AuthenticatedGuad } from './guards/authenticated.guard';
 
 const routes: Routes = [
@@ -48,7 +47,7 @@ const routes: Routes = [
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
   { path: 'cinemas/create', component: CinemasCreateComponent },
   // { path: 'cinemas/update', component: CinemasCreateComponent },
-  { path: 'cinemas/update/:id', component: CinemasUpdateComponent },
+  { path: 'cinemas/update/:id', component: CinemasCreateComponent },
   { path: 'cinemas/:id', component:SingleCinemaComponent},
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
