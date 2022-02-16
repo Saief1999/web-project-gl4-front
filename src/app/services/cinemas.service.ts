@@ -34,7 +34,7 @@ export class CinemasService {
         return this.http.put<Cinema>(`${this.cinemasUrl}/${cinema._id}`, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
     }
 
-    getCinema(id: number): Observable<Cinema> {
+    getCinema(id: string): Observable<Cinema> {
         return this.http.get<Cinema>(`${this.cinemasUrl}/${id}`)
     }
 }

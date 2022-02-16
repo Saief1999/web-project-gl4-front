@@ -37,7 +37,7 @@ export class CinemasUpdateComponent extends CinemasCreateComponent {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      const id: number = params['id'];
+      const id: string = params['id'];
       this.cinemaService.getCinema(id).subscribe((cinema) => {
         this.cinema = cinema;
       });

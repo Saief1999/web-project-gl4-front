@@ -54,10 +54,6 @@ export class CinemasCreateComponent implements OnInit {
         const imgURLObserver = this.cinemaService.uploadFile(event.target.files[0]);
         imgURLObserver.subscribe( ( cinemaImage: CinemaImage ) => {
           this.cinema.imageUrl = cinemaImage.imageUrl;
-<<<<<<< HEAD
-          console.log(cinemaImage.imageUrl);
-=======
->>>>>>> main
           this.imgURL = cinemaImage.imageUrl;
         });
       }
