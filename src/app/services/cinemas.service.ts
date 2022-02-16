@@ -15,4 +15,7 @@ export class CinemasService {
         return this.http.get(this.cinemasUrl);
     }
 
+    getCinema(id:number) {
+        return this.http.get(`${this.cinemasUrl}/${id}`)
+    }
 }
