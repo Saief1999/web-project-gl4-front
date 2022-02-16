@@ -1,18 +1,16 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BACKEND_URL } from '../../constants';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BACKEND_URL } from "../../constants";
 import {Observable} from 'rxjs';
 import {CinemaImage} from '../dto/cinemas/cinema-image';
 import {Cinema} from '../dto/cinemas/cinema';
-import {Router} from '@angular/router';
-import {CinemasPageComponent} from '../pages/cinemas/cinemas-page.component';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CinemasService {
     private cinemasUrl ;
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient) {
         this.cinemasUrl = `${BACKEND_URL}/cinemas`;
     }
 
@@ -32,5 +30,9 @@ export class CinemasService {
 
     updateCinema(cinema: Cinema) {
         return this.http.put<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
+    }
+
+    getCinema(id: number) {
+        return this.http.get(`${this.cinemasUrl}/${id}`)
     }
 }
