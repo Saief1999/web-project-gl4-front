@@ -51,4 +51,8 @@ export class AuthenticationService {
       return JSON.parse(atob(token.split('.')[1])) as TokenPayloadDto;
     }
   }
+
+  logout(){
+    localStorage.removeItem("token");
+  }
 }

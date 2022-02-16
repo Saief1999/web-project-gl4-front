@@ -1,0 +1,179 @@
+<div class="page-header" data-parallax="true" style="background-image: url('./assets/img/bruno-abatti.jpg');">
+    <div class="filter"></div>
+    <div class="container">
+        <div class="motto text-center">
+            <h1>Welcome To <span class="text-primary">Watch Near</span></h1>
+            <h3>Your place to plan what movie to watch and where</h3>
+            <br />
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mr-auto ml-auto">
+                <h2 class="title">What do we offer you</h2>
+                <h5 class="description">
+                    Hello. It's your free time and you are looking for a way to have a good time. 
+                    A movie sounds like a good idea right? the problem is you might be thinking what movie to watch or where to watch it. 
+                    In comes <span class="text-primary">Watch Near</span> The best place that guides you to the best option
+                </h5>
+                <br>
+            </div>
+        </div>
+        <br/><br/>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="info">
+                    <div class="icon icon-danger">
+                        <i class="custom-icon fa fa-video-camera"></i>
+                    </div>
+                    <div class="description">
+                        <h4 class="info-title">Cinemas</h4>
+                        <p class="description">
+                            Find out the best cinemas arround and Where you can see your favorite movies <br><br>
+                        </p>
+                        <!-- here is going to be the check for authentication -->
+                        <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info">
+                    <div class="icon icon-danger">
+                        <i class="custom-icon fa fa-film"></i>
+                    </div>
+                    <div class="description">
+                        <h4 class="info-title">Movies</h4>
+                        <p>
+                            Checkout a list of all available movies. Maybe helping you pick one for the night<br><br>
+                        </p>
+                        <!-- here is going to be the check for authentication -->
+                        <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info">
+                    <div class="icon icon-danger">
+                        <i class="nc-icon nc-calendar-60"></i>
+                    </div>
+                    <div class="description">
+                        <h4 class="info-title">Plannings</h4>
+                        <p>
+                            Find out all about cinemas plannings for the week or which cinema and when it's showing your favorite movie 
+                        </p>
+                        <!-- here is going to be the check for authentication -->
+                        <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section section-dark text-center">
+    <div class="container">
+        <h2 class="title">Let's talk about us</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4" *ngFor="let user of admins">
+                <div class="card card-profile card-plain">
+                    <div class="card-avatar">
+                        <a href="#avatar"><img [src]="user.profileImage" alt="..."></a>
+                    </div>
+                    <div class="card-block">
+                        <a href="#paper-kit">
+                            <div class="author">
+                                <h4 class="card-title">{{ user.firstname }} {{ user.lastname }} </h4>
+                            </div>
+                        </a>
+                        <p class="card-description text-center">
+                        {{ user.quote }} <br>
+                        {{ user.email }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section landing-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <div *ngIf="authenticated">
+                        <h2 class="text-center">Keep in touch?</h2>
+                        <div *ngIf="errorMessage !== ''" class="alert alert-danger my-2 text-center">
+                            <div class="container">
+                                <i class="nc-bell-55 nc-icon"></i>
+                                {{ errorMessage }}
+                                <button type="button" class="close" (click)="removeMessage()">
+                                    <i class="nc-icon nc-simple-remove"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div *ngIf="successMessage !== ''" class="alert alert-success my-2 text-center">
+                            <div class="container">
+                                <i class="nc-bell-55 nc-icon"></i>
+                                {{ successMessage }}
+                                <button type="button" class="close" (click)="removeMessage()">
+                                    <i class="nc-icon nc-simple-remove"></i>
+                                </button>
+                            </div>
+                        </div>
+                            <form class="contact-form unbordered" [formGroup]="sendEmailForm" (ngSubmit)="submitEmail()">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="nc-icon nc-email-85"></i></span>
+                                        </div>
+                                        <select class="form-control" formControlName="destination">
+                                            <option *ngFor="let user of admins" [ngValue]="user.email">{{ user.firstname }} {{ user.lastname }} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <label>Message</label>
+                                <textarea class="form-control" formControlName="message" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
+                                <div class="row">
+                                    <div class="col-md-4 mr-auto ml-auto">
+                                        <button type="submit" [disabled]="sendEmailForm.invalid" class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                    <div *ngIf="! authenticated">
+                        <h2 class="text-center">Want to help us improve</h2>
+                        <p class="mt-4 card-description">
+                            All you need to do is loging in or creating an account and feel free to express yourself to our team
+                        </p>
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-md-2">
+                                <a [routerLink]="['/register/login']" class="btn w-100 btn-dark">Login</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a [routerLink]="['/register/signup']" class="btn w-100 btn-light">Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false"> -->
+<!-- <angular2-multiselect
+                                                                class="w-100"
+                                                                [data]="poetentialDestinations"
+                                                                [(ngModel)]="selectedDestination"
+                                                                [settings]="selectionOptions"
+                                                                (onSelect)="selectDestination($event)"
+                                    
+                                                                ></angular2-multiselect> -->

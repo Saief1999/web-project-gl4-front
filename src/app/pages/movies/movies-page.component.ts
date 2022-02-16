@@ -42,7 +42,9 @@ export class MoviesPageComponent implements OnInit{
         this.order = [{id: "popular", itemName:"Popular"}],
         this.orderSettings = {
             enableSearchFilter: false,
-            addNewItemOnFilter: true,singleSelection: true, text:"Select Order"
+            addNewItemOnFilter: true,
+            singleSelection: false, 
+            text:"Select Order"
         };
 
         this.listPopular();

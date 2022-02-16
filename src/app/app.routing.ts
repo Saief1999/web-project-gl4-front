@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ComponentsComponent } from './components/components.component';
 import { ProfileComponent } from './examples/profile/profile.component';
 import { SignupComponent } from './examples/signup/signup.component';
-import { LandingComponent } from './examples/landing/landing.component';
+import { LandingComponent } from './pages/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { RegistrationPageComponent } from './pages/auth/registration-page.component';
 import { LoginCardComponent } from './pages/auth/login-card/login-card.component';
@@ -23,10 +23,10 @@ import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: ComponentsComponent },
+  { path: 'home', component: LandingComponent },
   { path: 'user-profile', component: ProfileComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'landing', component: LandingComponent },
+  { path: 'landing', component: ComponentsComponent },
   { path: 'nucleoicons', component: NucleoiconsComponent },
   {
     path: 'register', component: RegistrationPageComponent,
