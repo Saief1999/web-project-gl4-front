@@ -66,6 +66,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CinemasPageComponent,
     CinemaImgComponent,
     CinemasCreateComponent,
+    CinemasUpdateComponent,
     CinemaElementComponent,
     MoviesPageComponent,
     MovieElementComponent,

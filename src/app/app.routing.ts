@@ -22,6 +22,7 @@ import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 // import { AuthenticatedGuad } from './guards/authenticated.guard';
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 import {SingleCinemaComponent} from './pages/cinemas/single-cinema/single-cinema.component';
+import {CinemasUpdateComponent} from './pages/cinemas/cinemas-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -46,7 +47,7 @@ const routes: Routes = [
   { path: 'account', component: AccountPageComponent, canActivate: [UserRoleGuard] },
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
   { path: 'cinemas/create', component: CinemasCreateComponent },
-  { path: 'cinemas/update', component: CinemasCreateComponent },
+  { path: 'cinemas/update/:id', component: CinemasUpdateComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
 ];
