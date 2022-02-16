@@ -23,6 +23,7 @@ import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
 import {SingleCinemaComponent} from './pages/cinemas/single-cinema/single-cinema.component';
 import {CinemasUpdateComponent} from './pages/cinemas/cinemas-update.component';
+import { AuthenticatedGuad } from './guards/authenticated.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -43,7 +44,7 @@ const routes: Routes = [
   { path: 'movies', component: MoviesPageComponent },
   { path: 'movies/:id', component: MoviePageComponent},
   { path: 'confirm-email', component: ConfirmEmailComponent, canActivate:[UserRoleGuard] },
-  { path: 'account', component: AccountPageComponent, canActivate: [UserRoleGuard] },
+  { path: 'account', component: AccountPageComponent, canActivate: [AuthenticatedGuad] },
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
   { path: 'cinemas/create', component: CinemasCreateComponent },
   // { path: 'cinemas/update', component: CinemasCreateComponent },
