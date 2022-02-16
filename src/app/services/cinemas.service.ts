@@ -34,8 +34,8 @@ export class CinemasService {
         return this.http.put<Cinema>(`${this.cinemasUrl}/${cinema._id}`, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
     }
 
-    removeCinema(cinema: Cinema) {
-        return this.http.delete(`${this.cinemasUrl}/$${cinema._id}`)
+    removeCinema(id: string) {
+        return this.http.delete(`${this.cinemasUrl}/${id}`)
     }
 
     getCinema(id: string): Observable<Cinema> {

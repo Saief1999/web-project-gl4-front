@@ -35,8 +35,7 @@
                 </p>
                 <div class="mt-2" *ngIf="isAdmin()">
                     <button class="btn btn-warning btn-round" (click)="updateCinema(cinema._id)">Update</button>
-                    <button class="ml-2 btn btn-danger btn-round" >Remove</button>
-                    <!-- (click)="removeCinema(cinema.id)" -->
+                    <button class="ml-2 btn btn-danger btn-round" (click)="removeCinema(cinema._id)">Remove</button>
                 </div>
         </div>
     </div>
