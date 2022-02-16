@@ -21,6 +21,8 @@ import { UserRoleGuard } from './guards/user-role.guard';
 import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
 // import { AuthenticatedGuad } from './guards/authenticated.guard';
 import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
+import {SingleCinemaComponent} from './pages/cinemas/single-cinema/single-cinema.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LandingComponent },
@@ -28,6 +30,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'landing', component: ComponentsComponent },
   { path: 'nucleoicons', component: NucleoiconsComponent },
+  { path: 'cinema/:id', component: SingleCinemaComponent },
   {
     path: 'register', component: RegistrationPageComponent,
     children: [
@@ -42,7 +45,8 @@ const routes: Routes = [
   { path: 'confirm-email', component: ConfirmEmailComponent, canActivate:[UserRoleGuard] },
   { path: 'account', component: AccountPageComponent, canActivate: [UserRoleGuard] },
   { path: 'cinemas', component: CinemasPageComponent, /*canActivate: [AuthenticatedGuard] */ },
-  { path: 'create', component: CinemasCreateComponent },
+  { path: 'cinemas/create', component: CinemasCreateComponent },
+  { path: 'cinemas/update', component: CinemasCreateComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundPageComponent }
 ];
