@@ -33,6 +33,11 @@
                     {{ cinema.description }}
                     <!-- <a  [routerLink]="['/cinemas/'+cinema.id]"> Read More </a> -->
                 </p>
+                <div class="mt-2" *ngIf="isAdmin()">
+                    <button class="btn btn-warning btn-round" (click)="updateCinema(cinema._id)">Update</button>
+                    <button class="ml-2 btn btn-danger btn-round" >Remove</button>
+                    <!-- (click)="removeCinema(cinema.id)" -->
+                </div>
         </div>
     </div>
 </div>

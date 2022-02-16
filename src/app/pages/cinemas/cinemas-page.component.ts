@@ -1,7 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenPayloadDto } from 'app/dto/auth/token-payload.dto';
 import { CinemaListItem } from 'app/dto/cinemas/cinema-list-item';
+import { AuthenticationService } from 'app/services/authentication.service';
 import { CinemasService } from 'app/services/cinemas.service';
 
 @Component({
@@ -13,7 +15,8 @@ export class CinemasPageComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private cinemaService:CinemasService
+    private cinemaService:CinemasService,
+    private authService: AuthenticationService
   ) { }
 
 
@@ -25,4 +28,12 @@ export class CinemasPageComponent implements OnInit {
     })
   }
 
+  isAdmin() {
+    return this.authService.hasRole("admin");
+  }
+
+  createCinema() {
+    console.log("Hi")
+    this.router.navigate(["cinemas","create"]);
+  }
 }

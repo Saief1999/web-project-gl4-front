@@ -50,6 +50,19 @@ export class AuthenticationService {
       const token: string = localStorage.getItem('token');
       return JSON.parse(atob(token.split('.')[1])) as TokenPayloadDto;
     }
+    return null ;
+  }
+
+  hasRole(role:string):boolean {
+    const tokenPayload: TokenPayloadDto = this.getTokenPayload();
+
+    if (tokenPayload === null) return false ;
+    
+    if(tokenPayload.role === role) {
+      return true;
+    }
+
+    return false ;
   }
 
   logout(){
