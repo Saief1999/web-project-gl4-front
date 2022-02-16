@@ -8,7 +8,7 @@
     >
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" [routerLink]="['/']">Movies Project</a>
+            <a class="navbar-brand" [routerLink]="['/']"><img src="../../../assets/img/logo_watch_near.png" class="navbar-icons"></a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
@@ -54,11 +54,6 @@
                         <i class="nc-icon"></i>
                         Cinemas</a>
                 </li>
-                <!-- <li class="nav-item" *ngIf="isAuthenticated">
-                    <a   href="#" class="nav-link">
-                        <i class="nc-icon nc-layout-11"></i>
-                        Plannings</a>
-                </li> -->
                 <li class="nav-item" *ngIf="isAuthenticated">
                     <a   [routerLink]="'/movies'" class="nav-link">
                         <!-- <i class="nc-icon nc-layout-11"></i> -->
@@ -66,19 +61,23 @@
                 </li>
                 <li class="nav-item" *ngIf="!isAuthenticated">
                     <a [routerLink]="['/register/login']"  class="nav-link">
-                        <i class="nc-icon"></i>
+                        <i class="nc-icon nc-key-25"></i>
                         Login</a>
                 </li>
 
                 <li class="nav-item" *ngIf="!isAuthenticated">
                     <a [routerLink]="['/register/signup']"  class="nav-link">
-                        <i class="nc-icon"></i>
+                        <i class="nc-icon nc-simple-add"></i>
                         Register</a>
                 </li>
-                <li class="nav-item" *ngIf="isAuthenticated && role==='user'">
+                <li class="nav-item" *ngIf="isAuthenticated">
                     <a [routerLink]="['/account']" class="nav-link">
-                        <i class="nc-icon nc-circle-10"></i>
                         Account
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a (click)="logout()" class="nav-link">
+                        logout
                     </a>
                 </li>
 

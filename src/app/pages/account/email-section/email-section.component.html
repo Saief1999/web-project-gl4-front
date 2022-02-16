@@ -36,7 +36,12 @@ it
     <form class="mt-5" [formGroup]="newEmailForm" (ngSubmit)="submitNewEmail()">
         <div class="form-group">
             <label for="new-email">Your new Email</label>
-            <input type="text" class="form-control" id="new-email" formControlName="newEmail">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="nc-icon nc-email-85"></i></span>
+                </div>
+                <input type="text" class="form-control" id="new-email" formControlName="newEmail">
+            </div>
             <div *ngIf="newEmailForm.invalid && newEmailForm.touched">
                 <span style="color: red;">Invalid Email</span>
             </div>
@@ -57,7 +62,12 @@ it
     <form class="mt-5" [formGroup]="emailVerificationCodeForm" (ngSubmit)="submitEmailVerification()">
         <div class="form-group">
             <label for="">Verification Code</label>
-            <input type="number" class="ml-2 form-control-sm" formControlName="verificationCode">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="nc-icon nc-key-25"></i></span>
+                </div>
+                <input type="number" class="ml-2 form-control-sm" formControlName="verificationCode">
+            </div>
             <span class="text-danger" *ngIf="emailVerificationCodeForm.invalid && emailVerificationCodeForm.touched">
                 please check your verification code
             </span>

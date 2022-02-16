@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, OnChanges, DoCheck } from '@angular/core
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AuthenticationService } from 'app/services/authentication.service';
 import { TokenPayloadDto } from 'app/dto/auth/token-payload.dto';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -17,7 +18,8 @@ export class NavbarComponent implements OnInit, DoCheck{
     constructor(
         public location: Location, 
         private element : ElementRef,
-        private readonly authService: AuthenticationService
+        private readonly authService: AuthenticationService,
+        private readonly router: Router
         ) {
         this.sidebarVisible = false;
     }
@@ -96,5 +98,10 @@ export class NavbarComponent implements OnInit, DoCheck{
         else {
             return false;
         }
+    }
+
+    logout(){
+        this.authService.logout();
+        this.router.navigate(['home'])
     }
 }
