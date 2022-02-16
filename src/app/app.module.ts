@@ -33,7 +33,7 @@ import { MoviesPageComponent } from './pages/movies/movies-page.component';
 import { MoviePageComponent } from './pages/movie/movie-page.component';
 
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown"
-import {CinemasCreateComponent} from './pages/cinemas/cinemas-create.component';
+import {CinemasCreateComponent} from './pages/cinemas/cinema-create/cinemas-create.component';
 import {CinemaImgComponent} from './pages/cinemas/cinema-img/cinema-img.component';
 import { defaultImagePipe } from './pipes/default-image.pipe';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -45,7 +45,6 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import BootstrapThemePlugin  from '@fullcalendar/bootstrap';
 import { CalendarComponent } from './pages/cinemas/calendar/calendar.component';
 import { LandingComponent } from './pages/landing/landing.component';
-import {CinemasUpdateComponent} from './pages/cinemas/cinemas-update.component';
 import {SingleCinemaComponent} from './pages/cinemas/single-cinema/single-cinema.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -67,7 +66,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CinemasPageComponent,
     CinemaImgComponent,
     CinemasCreateComponent,
-    CinemasUpdateComponent,
     CinemaElementComponent,
     SingleCinemaComponent,
     MoviesPageComponent,

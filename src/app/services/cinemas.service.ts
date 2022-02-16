@@ -25,13 +25,12 @@ export class CinemasService {
         return this.http.post<CinemaImage>(this.cinemasUrl + '/upload', formData);
     }
 
-    createCinema(cinema: Cinema) {
-        console.log(cinema);
-        return this.http.post<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
+    createCinema(cinema: Cinema): Observable<Cinema>{
+        return this.http.post<Cinema>(this.cinemasUrl, cinema);
     }
 
-    updateCinema(cinema: Cinema) {
-        return this.http.put<Cinema>(`${this.cinemasUrl}/${cinema._id}`, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
+    updateCinema(cinema: Cinema) : Observable<Cinema>{
+        return this.http.put<Cinema>(`${this.cinemasUrl}/${cinema._id}`, cinema);
     }
 
     removeCinema(id: string) {
