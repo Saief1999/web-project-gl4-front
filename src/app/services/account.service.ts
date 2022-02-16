@@ -7,7 +7,7 @@ import {
   PASSWORDVERIFICATIONLINK, 
   EMAILUPDATELINK, 
   EMAILVERIFICATIONLINK,
-  PROFILEIMAGEUPDATELINK 
+  PROFILEIMAGEUPDATELINK,
 } from '../../constants';
 import { Observable } from 'rxjs';
 import { AccountUpdateResponseDto } from 'app/dto/account/account-update-response.dto';
