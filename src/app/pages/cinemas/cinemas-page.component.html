@@ -7,11 +7,11 @@
                         <h1> Cinemas</h1>
                     </div> 
                     <div class="col-2 ml-0" *ngIf="isAdmin()">
-                        <button class="btn btn-success btn-block btn-round" (click)="createCinema()">+ Cinema</button>
+                        <button class="btn btn-success btn-block btn-round"  (click)="createCinema()">+ Cinema</button>
                     </div>
                 </div>
                 <div>
-                    <app-cinema-element class="mt-5" *ngFor="let cinema of cinemas" [cinema]="cinema"></app-cinema-element>
+                    <app-cinema-element class="mt-5" *ngFor="let cinema of cinemas" [cinema]="cinema" (removeEvent)="removeCinema($event)"></app-cinema-element>
                 </div>
                 </div>
             </div>
