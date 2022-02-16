@@ -26,14 +26,15 @@ export class CinemasService {
     }
 
     createCinema(cinema: Cinema) {
+        console.log(cinema);
         return this.http.post<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
     }
 
     updateCinema(cinema: Cinema) {
-        return this.http.put<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
+        return this.http.put<Cinema>(`${this.cinemasUrl}/${cinema._id}`, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
     }
 
-    getCinema(id: number) {
-        return this.http.get(`${this.cinemasUrl}/${id}`)
+    getCinema(id: number): Observable<Cinema> {
+        return this.http.get<Cinema>(`${this.cinemasUrl}/${id}`)
     }
 }
