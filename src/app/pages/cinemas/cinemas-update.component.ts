@@ -1,12 +1,13 @@
 
 import {Component, Input, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { CinemaListItem } from 'app/dto/cinemas/cinema-list-item';
 import { CinemasService } from 'app/services/cinemas.service';
 import {Cinema} from '../../dto/cinemas/cinema';
 import {CinemaImage} from '../../dto/cinemas/cinema-image';
 import {Route} from '@angular/router';
 import {CinemasCreateComponent} from './cinemas-create.component';
+import {MovieDetails} from '../../dto/movies/movie-details';
 
 @Component({
   selector: 'app-cinemas-create',
@@ -17,12 +18,12 @@ export class CinemasUpdateComponent extends CinemasCreateComponent {
 
   constructor(
     protected router: Router,
-    protected cinemaService: CinemasService
+    protected cinemaService: CinemasService,
+    private activatedRoute: ActivatedRoute,
   ) {
     super(router,cinemaService);
     this.cinema = new Cinema();
-    this.cinema.description='';
-    this.imgURL = 'assets/img/cinema.jpg'
+    this.imgURL = this.cinema.imageUrl;
   }
 
   reset(): void
@@ -35,7 +36,12 @@ export class CinemasUpdateComponent extends CinemasCreateComponent {
   }
 
   ngOnInit(): void {
-
+    this.activatedRoute.params.subscribe(params => {
+      const id: number = params['id'];
+      this.cinemaService.getCinema(id).subscribe((cinema) => {
+        this.cinema = cinema;
+      });
+      })
   }
 
   onPublish(): void
