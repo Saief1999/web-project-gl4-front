@@ -6,24 +6,20 @@ import { CinemasService } from 'app/services/cinemas.service';
 import {Cinema} from '../../dto/cinemas/cinema';
 import {CinemaImage} from '../../dto/cinemas/cinema-image';
 import {Route} from '@angular/router';
+import {CinemasCreateComponent} from './cinemas-create.component';
 
 @Component({
   selector: 'app-cinemas-create',
   templateUrl: './cinemas-create-minimal.component.html',
   styleUrls: ['./cinemas-create.component.css']
 })
-export class CinemasCreateComponent implements OnInit {
+export class CinemasUpdateComponent extends CinemasCreateComponent {
 
-  imgURL: string;
-  @Input()
-  cinema: Cinema;
-  @Input()
-  termsNotAgree: boolean;
-  imgFile: File;
   constructor(
     protected router: Router,
     protected cinemaService: CinemasService
   ) {
+    super(router,cinemaService);
     this.cinema = new Cinema();
     this.cinema.description='';
     this.imgURL = 'assets/img/cinema.jpg'
@@ -44,7 +40,7 @@ export class CinemasCreateComponent implements OnInit {
 
   onPublish(): void
   {
-    this.cinemaService.createCinema(this.cinema);
+    this.cinemaService.updateCinema(this.cinema);
   }
 
   onFileInput(event):void
