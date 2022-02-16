@@ -4,13 +4,14 @@ import { BACKEND_URL } from "../../constants";
 import {Observable} from 'rxjs';
 import {CinemaImage} from '../dto/cinemas/cinema-image';
 import {Cinema} from '../dto/cinemas/cinema';
+import {Router} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CinemasService {
     private cinemasUrl ;
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
         this.cinemasUrl = `${BACKEND_URL}/cinemas`;
     }
 
