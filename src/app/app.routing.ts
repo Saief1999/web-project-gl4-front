@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'landing', component: LandingComponent },
   { path: 'nucleoicons', component: NucleoiconsComponent },
+  { path: 'cinema/:id', component: SingleCinemaComponent },
   {
     path: 'register', component: RegistrationPageComponent,
     children: [

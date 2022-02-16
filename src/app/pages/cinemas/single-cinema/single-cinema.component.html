@@ -1,15 +1,15 @@
-    <div class="card-image">
-        <!-- <img src="assets/img/uriel-soberanes.jpg" alt="cinema"> -->
-            <img  src="../../../../assets//img//cinema.jpg" alt="cinema">
+    <div class="cover-image-container page-header page-header-small">
+        <div class="filter"></div>
+
     </div>
 
-    <div class="row">
-        <div class="col-md-7 col-sm-6">
-            <div class="cinemaImage ">
-                <img [src]="cinema.imageUrl" alt="cinema">
+    <div class="row mt-5">
+        <div class="col-md-6 col-sm-6 ">
+            <div class="cinemaImage pl-5">
+                <img [src]="cinema.imageUrl" alt="cinema-image">
             </div>
         </div>
-        <div class="cinemaInfo col-md-5 col-sm-6">
+        <div class="cinemaInfo col-md-6 col-sm-6 ">
             <div>
                 <h2>
                     {{cinema.name}}
@@ -20,25 +20,26 @@
             </div>
             
             <div class="contact-info">
+                <br>
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
+                    <div class="title1 col-md-5 col-sm-6">
                         <p>adresse :</p>
-                        <p>phone number :</p> 
+                        <p>phone number :</p>
+                        <p>openingTime: </p>
+                        <p>closingTime : </p>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        {{cinema.address}}
-                        {{cinema.phone}}
+                    <div class=" col-md-7 col-sm-6">
+                        <p>{{cinema.address}}</p>
+                        <p>{{cinema.phone}}</p>
+                        <p>{{cinema.openingTime}}</p>
+                        <p>{{cinema.closingTime}}</p>
                     </div>
 
                 </div>
            
 
             </div>
-            
-            name
-            
-             openingTime
-            closingTime
+        
         </div>
 
     </div>
