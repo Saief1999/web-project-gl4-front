@@ -26,6 +26,7 @@ export class CinemasService {
     }
 
     createCinema(cinema: Cinema) {
+        console.log(cinema);
         return this.http.post<Cinema>(this.cinemasUrl, cinema).subscribe(T=>this.router.navigate(["cinemas"]));
     }
 
