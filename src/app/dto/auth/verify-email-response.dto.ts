@@ -1,9 +1,9 @@
-export class VerifyEmailResponseDto{
-    message: string;
-    token: string;
+export class VerifyEmailResponseDto {
+  message: string;
+  token: string;
 
-    constructor(){
-        this.message = '';
-        this.token = '';
-    }
+  constructor() {
+    this.message = "";
+    this.token = "";
+  }
 }
