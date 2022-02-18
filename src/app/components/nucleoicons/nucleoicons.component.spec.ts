@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NucleoiconsComponent } from './nucleoicons.component';
+import { NucleoiconsComponent } from "./nucleoicons.component";
 
-describe('NucleoiconsComponent', () => {
+describe("NucleoiconsComponent", () => {
   let component: NucleoiconsComponent;
   let fixture: ComponentFixture<NucleoiconsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NucleoiconsComponent ]
-    })
-    .compileComponents();
+      declarations: [NucleoiconsComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NucleoiconsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(component).toBeTruthy();
   });
 });

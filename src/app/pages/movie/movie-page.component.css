@@ -19,3 +19,16 @@
     font-size: 18px;
     font-weight:400;
 }
+
+.rating-star {
+    color: #FFC72B;
+}
+
+.movie-title {
+   font-size:3.6em
+}
+
+.movie-release-year {
+    font-size: 2.4em;
+    opacity: 70%;
+}

@@ -1,4 +1,3 @@
-export class CinemaImage
-{
-    imageUrl:string;
+export class CinemaImage {
+  imageUrl: string;
 }

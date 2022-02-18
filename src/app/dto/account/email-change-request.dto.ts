@@ -1,6 +1,6 @@
-export class EmailChangeRequestDto{
-    newEmail: string;
-    constructor(){
-        this.newEmail = '';
-    }
+export class EmailChangeRequestDto {
+  newEmail: string;
+  constructor() {
+    this.newEmail = "";
+  }
 }

@@ -5,15 +5,15 @@ import { Observable } from "rxjs";
 import { BACKEND_URL } from "../../constants";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root"
 })
 export class GenresService {
-    private genresUri ;
-    constructor(private http:HttpClient) {
-        this.genresUri = `${BACKEND_URL}/genres`; 
-    }
+  private genresUri;
+  constructor(private http: HttpClient) {
+    this.genresUri = `${BACKEND_URL}/genres`;
+  }
 
-    listGenres():Observable<Genre[]>{
-        return this.http.get<Genre[]>(`${this.genresUri}/movies`)
-    }
+  listGenres(): Observable<Genre[]> {
+    return this.http.get<Genre[]>(`${this.genresUri}/movies`);
+  }
 }

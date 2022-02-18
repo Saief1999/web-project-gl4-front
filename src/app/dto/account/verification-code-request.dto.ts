@@ -1,6 +1,6 @@
-export class VerificationCodeRequestDto{
-    verificationCode: number;
-    constructor(){
-        this.verificationCode = 0
-    }
+export class VerificationCodeRequestDto {
+  verificationCode: number;
+  constructor() {
+    this.verificationCode = 0;
+  }
 }
