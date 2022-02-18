@@ -22,7 +22,4 @@ if (environment.production) {
   enableProdMode();
 }
 
-Math.random();
-Math.random();
-
 platformBrowserDynamic().bootstrapModule(AppModule);
